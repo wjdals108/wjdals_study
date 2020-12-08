@@ -1,0 +1,32 @@
+package com.koreait.first.obj;
+
+import java.util.Arrays;
+
+public class ObjTest3 {												//파일명과 같은 class 앞에만 public을 붙일 수 있다.
+
+	public static void main(String[] args) {
+		
+		int[] arr = {4,7,1,9,3};
+		
+		orderBy(arr);											//파괴메소드 또는 원본 수정이 있는 메소드라고 부름
+		
+		System.out.println(Arrays.toString(arr));
+	}
+	
+	public static void orderBy(int[] arr) {
+		
+		Arrays.sort(arr);
+		/*
+		int temp = 0;
+		for(int i=0; i<arr.length-1; i++) {		//선택정렬
+			for(int j=i+1; j<arr.length; j++) {
+				if(arr[i]>arr[j]) {
+					temp=arr[j];
+					arr[j]=arr[i];
+					arr[i]=temp;
+				}
+			}
+		}
+		*/
+	}
+}
