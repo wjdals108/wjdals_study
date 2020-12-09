@@ -6,9 +6,7 @@ public class VendingMachineTest4 {
 		VendingMachine vm = new VendingMachine();
 		vm.showMenus();
 		vm.purchase();
-		
+		vm.showSum();
 	}
 	
-	
-
 }

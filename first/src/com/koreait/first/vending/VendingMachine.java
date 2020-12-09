@@ -33,7 +33,6 @@ public class VendingMachine {
 	
 	void purchase() {
 		
-		int sum=0;
 		for(;;) {
 			System.out.print("메뉴선택 (0:종료) > ");
 			int choiceNo = scan.nextInt();
@@ -49,7 +48,9 @@ public class VendingMachine {
 			
 		}
 		scan.close();
-		
+	}
+	
+	void showSum() {
 		System.out.printf("총 구매금액 : %,d원\n", sum);
 	}
 	
