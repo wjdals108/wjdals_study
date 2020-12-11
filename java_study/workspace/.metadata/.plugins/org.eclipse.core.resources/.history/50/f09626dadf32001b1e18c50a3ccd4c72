@@ -1,0 +1,15 @@
+package com.koreait.first.method;
+
+public class MethodStar {
+
+	public static void main(String[] args) {
+		star(4);
+		
+	}
+	
+	public static void star(int n1) {
+		for(int i=0; i<n1; i++) {
+			System.out.print("*");
+		}
+	}
+}

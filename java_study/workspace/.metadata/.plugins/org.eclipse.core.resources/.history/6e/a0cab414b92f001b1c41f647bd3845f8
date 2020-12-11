@@ -1,0 +1,13 @@
+package com.koreait.first.loop;
+
+public class For2 {
+
+	public static void main(String[] args) {
+		
+		int dan = 9;
+		
+		for(int i=15; i<24; i++) {
+			System.out.printf("%d * %d = %d \n", dan, i-8, dan*(i*-8);
+		}		
+	}
+}

@@ -1,0 +1,11 @@
+package com.koreait.first.db;
+
+import java.sql.Connection;
+
+public class DbUtils {
+	public static Connection getCon() {
+		Connection con = null;
+		
+		return con;
+	}
+}

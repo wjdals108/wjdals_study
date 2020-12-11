@@ -1,0 +1,17 @@
+package com.koreait.first.test;
+
+import java.util.Arrays;
+
+public class ArrayListTest3 {
+
+	public static void main(String[] args) {
+		MyArrayList list = new MyArrayList();
+		list.add(110);
+		list.add(220);
+		list.add(1,330);
+		
+		System.out.println(list.get(0));
+			
+		
+	}
+}

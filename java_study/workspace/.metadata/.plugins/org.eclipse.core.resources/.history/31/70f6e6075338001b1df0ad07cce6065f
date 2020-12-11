@@ -1,0 +1,14 @@
+package com.koreait.first.vending;
+
+public class VendingMachineTest2 {
+
+	public static void main(String[] args) {
+		String[] nmArr = {"콜라", "사이다", "환타", "솔의눈"};
+		int[] priceArr = {500, 600, 700, 800};
+		
+		System.out.println("-- 메뉴 --");
+		System.out.println(nmArr[0] + priceArr[0]);
+		
+	}
+
+}

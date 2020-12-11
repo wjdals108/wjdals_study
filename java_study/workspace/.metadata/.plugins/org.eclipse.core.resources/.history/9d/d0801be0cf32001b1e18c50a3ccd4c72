@@ -1,0 +1,16 @@
+package com.koreait.first.method;
+
+public class Method1 {
+
+	public static void main(String[] args) {
+		sum(1, 2);
+		sum(10, 20);
+		sum(100, 2500);
+		
+	}
+	
+	public static void sum(int n1, int n2) {
+		System.out.printf("%d + %d = %d\n", n1, n2, n1+n2);
+	}
+
+}

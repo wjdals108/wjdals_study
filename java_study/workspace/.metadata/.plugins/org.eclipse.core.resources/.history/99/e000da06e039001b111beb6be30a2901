@@ -1,0 +1,11 @@
+package com.koreait.first.abst;
+
+public class AbstB extends AbstA {
+
+	@Override
+	public void bark() {
+		
+		
+	}
+	
+}

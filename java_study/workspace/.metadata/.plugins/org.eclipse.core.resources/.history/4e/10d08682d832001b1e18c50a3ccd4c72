@@ -1,0 +1,23 @@
+package com.koreait.first.method;
+
+import java.util.Scanner;
+
+public class MethodGugudan {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("2~9까지의 숫자를 입력하세요 : ");
+		int a = scan.nextInt();
+		
+		gugudan(a);
+		
+		scan.close();
+	}
+	
+	public static void gugudan(int n1) {
+		for(int i=1; i<10; i++) {
+			System.out.printf("%d X %d = %d\n", n1,i,n1*i);
+		}
+	}
+}
+

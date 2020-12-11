@@ -1,0 +1,50 @@
+package com.koreait.first.method;
+
+public class MethodStar {
+
+	public static void main(String[] args) {
+		printStarReverseTri(5);
+	}
+	
+	public static void printStarReverseTri(int star) {
+		for(int i=star; i>0; i--) {
+			for(int j=0; j<star; j++) {
+				if(i>j+1) {
+					printShape(1, " ");
+				}
+				else {
+					printStar(1);
+				}
+			}
+			System.out.println();
+		}
+	}
+	
+	public static void printStarTri(int star) {
+		for(int i=0; i<star; i++) {
+			printStar(i+1);
+			System.out.println();
+		}
+	}
+	
+	
+	
+	public static void printStarSquare(int star) {
+		for(int i=0; i<star; i++) {
+			printStar(star);
+			System.out.println();
+		}
+	}
+	
+	public static void printShape(int star, String shape) {
+		for(int i=0; i<star; i++) {
+			System.out.print(" ");
+		}
+	}
+	
+	public static void printStar(int star) {
+		for(int i=0; i<star; i++) {
+			System.out.print("*");
+		}
+	}
+}

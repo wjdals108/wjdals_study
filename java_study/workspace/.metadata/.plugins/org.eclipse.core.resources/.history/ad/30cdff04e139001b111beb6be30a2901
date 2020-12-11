@@ -1,0 +1,17 @@
+package com.koreait.first.abst;
+
+public class AbstractTeest {
+
+	public static void main(String[] args) {
+		AbstA aa = new AbstB();
+		aa.bark();
+		
+		AbstB ab = (AbstB)aa;
+		ab.shakeTail();
+		//((AbstB)aa).shakeTail();
+		
+		((AbstC)aa).print();
+		
+	}
+
+}

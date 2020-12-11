@@ -1,0 +1,19 @@
+package com.koreait.first.starcraft;
+
+public class StarCraftTest {
+
+	public static void main(String[] args) {
+		AttackUnit m1 = new Marine();
+		AttackUnit m2 = new Marine();
+		AttackUnit f1 = new Firebat();
+		
+		m1.attack(m2);
+		
+		m1.showMyHp();
+		m2.showMyHp();
+		f1.showMyHp();
+		
+		
+	}
+
+}

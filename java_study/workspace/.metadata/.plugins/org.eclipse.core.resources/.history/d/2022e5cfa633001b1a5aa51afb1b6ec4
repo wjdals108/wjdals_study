@@ -1,0 +1,21 @@
+package com.koreait.first.obj;
+
+public class ObjTest {
+
+	public static void main(String[] args) {
+		int mNum = 10;
+		
+		NumberBox nbx = new NumberBox();
+		nbx.num = 10;
+		
+		
+		
+	}
+
+}
+
+
+class NumberBox{
+	int num;
+	
+}

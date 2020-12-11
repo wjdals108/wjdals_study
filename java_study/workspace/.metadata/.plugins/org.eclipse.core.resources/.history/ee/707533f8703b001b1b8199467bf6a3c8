@@ -1,0 +1,27 @@
+package com.koreait.first.test;
+
+public class ValueBox {
+	private int value;
+	
+	public ValueBox() {
+		
+	}
+	
+	public ValueBox(int value) {
+		this.value = value;
+	}
+
+	public int getValue() {
+		return value;
+	}
+
+	public void setValue(int value) {
+		this.value = value;
+	}
+	
+	@Override
+	public boolean equals(Object v) {
+		
+		return value == ((ValueBox)v).getValue();
+	}
+}

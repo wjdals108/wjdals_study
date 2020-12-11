@@ -1,0 +1,19 @@
+package com.koreait.first.obj;
+
+public class ObjTest {												//파일명과 같은 class 앞에만 public을 붙일 수 있다.
+
+	public static void main(String[] args) {
+		int mNum = 10;
+		
+		NumberBox nbx = new NumberBox();
+		nbx.num = 10;
+		
+		
+	}
+}
+
+
+class NumberBox{
+	int num;
+	
+}

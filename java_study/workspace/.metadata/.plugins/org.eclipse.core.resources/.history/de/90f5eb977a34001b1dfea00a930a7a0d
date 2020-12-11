@@ -1,0 +1,30 @@
+package com.koreait.first.obj;
+
+public class StaticTest1 {
+
+	public static void main(String[] args) {
+		InstCalc ic = new InstCalc();
+		ic.n1 = 22;
+		ic.n2 = 55;
+		
+		System.out.println("ic : " + ic.sum());
+		
+		System.out.println(StatCalc.sum(22,55));
+		
+	}
+}
+
+class StatCalc {
+	static int sum(int n1, int n2) {
+		return n1+n2;
+	}
+}
+
+class InstCalc {
+	int n1;
+	int n2;
+	
+	int sum() {
+		return n1+n2;
+	}
+}

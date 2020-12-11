@@ -1,0 +1,12 @@
+package com.koreait.first.obj2;
+
+public class AnimalTest {
+
+	public static void main(String[] args) {
+		Animal ani_1 = new Animal();
+		ani_1.name = "바둑이";
+		ani_1.age = 2;
+		
+		ani_1.crying();
+	}
+}

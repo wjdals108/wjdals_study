@@ -1,0 +1,10 @@
+package com.koreait.first.inter;
+
+public class InterFather implements InterParent {
+
+	@Override
+	public void print() {
+		System.out.println("I'm your father.");
+	}
+
+}

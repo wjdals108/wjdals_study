@@ -1,0 +1,57 @@
+package com.koreait.first.card;
+
+//모양shape (spade, heart, clover, diamond)
+//번호value (A, 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K)
+public class Card {
+	public final String SHAPE;
+	public final String VALUE;
+	
+	/*
+	private final String[] shapeArr = {"spade", "heart", "clover", "diamond"};
+	private final String[] valueArr = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
+	/*
+	private int[] objArr = new int[52];
+	
+	public void makeCardArr() {
+		for(int i=0; i<objArr.length; i++) {
+			objArr[i] = i+1;
+		}
+	}
+	
+	public void makeCard() {
+		makeCardArr();
+		for(int i=0; i<shapeArr.length; i++) {
+			for(int j=0; j<valueArr.length; j++) {
+			}
+		}
+	}
+	*/
+	
+	
+	
+	
+	public Card(String shape, String value) {
+		SHAPE= shape;
+		VALUE = value;
+	}
+	
+	
+	public String getSHAPE() {
+		return SHAPE;
+	}
+
+	public String getVALUE() {
+		return VALUE;
+	}
+
+
+
+	@Override
+	public String toString() {
+		String str = SHAPE + " (" + VALUE +")";
+		
+		return str;
+	}
+	
+
+}

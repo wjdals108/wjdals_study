@@ -1,0 +1,11 @@
+package com.koreait.first.obj2;
+
+public class Animal {
+	String name;
+	int age;
+	
+	void crying() {
+		System.out.printf("%d살의 %s가 운다.\n",age,name);
+	}
+
+}

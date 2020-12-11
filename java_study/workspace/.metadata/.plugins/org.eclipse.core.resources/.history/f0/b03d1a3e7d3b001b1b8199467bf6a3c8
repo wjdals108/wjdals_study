@@ -1,0 +1,14 @@
+package com.koreait.first.db;
+
+public class DataBaseTest {
+
+	public static void main(String[] args) {
+		try {
+			DbUtils.getCon();
+		}
+		catch(Exception e) {
+			
+		}
+		
+	}
+}

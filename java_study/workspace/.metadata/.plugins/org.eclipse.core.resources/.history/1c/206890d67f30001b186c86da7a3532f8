@@ -1,0 +1,13 @@
+package com.koreait.first.array;
+
+public class Array {
+
+	public static void main(String[] args) {
+		int[] intArr = new int[100];			//정수형 배열
+		
+		float[] floatArr = new float[10];		//실수형 배열
+		
+		
+	}
+
+}

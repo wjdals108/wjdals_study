@@ -1,0 +1,14 @@
+package com.koreait.first.obj2;
+
+public class Animal2 {
+	private String name;
+	private int age;
+	
+	public void setName(String name) {					//name의 setter, 이러면 장점이 이상한 값이 주입되지 않도록 막는것도 가능하다.
+		this.name = name;
+	}
+	
+	public void crying() {
+		System.out.printf("%d살의 %s가 운다.\n",age,name);
+	}
+}

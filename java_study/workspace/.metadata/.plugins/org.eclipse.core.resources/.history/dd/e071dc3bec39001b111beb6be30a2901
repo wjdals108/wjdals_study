@@ -1,0 +1,8 @@
+package com.koreait.first.inter;
+
+public interface InterGrand {
+	final int MAX = 13;
+	
+	void print();
+	void print2();
+}

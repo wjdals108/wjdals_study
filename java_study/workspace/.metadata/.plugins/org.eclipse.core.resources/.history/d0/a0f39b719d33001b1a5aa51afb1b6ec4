@@ -1,0 +1,13 @@
+package com.koreait.first.obj;
+
+public class CarTest {
+
+	public static void main(String[] args) {
+		Car car1 = new Car();
+		
+		car1.name="s";
+		
+		car1.drive();
+	}
+
+}

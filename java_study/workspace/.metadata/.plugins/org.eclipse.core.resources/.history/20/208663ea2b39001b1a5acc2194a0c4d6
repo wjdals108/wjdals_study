@@ -1,0 +1,20 @@
+package blackjack;
+
+public class Card {
+	private int cardShape;
+	private String cardNumber;
+	
+	public Card(int cardShape, String cardNumber) {
+		this.cardShape = cardShape;
+		this.cardNumber = cardNumber;
+	}
+
+	public int getCardShape() {
+		return cardShape;
+	}
+
+	public String getCardNumber() {
+		return cardNumber;
+	}
+	
+}

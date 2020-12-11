@@ -1,0 +1,20 @@
+package com.koreait.first;
+
+public class AndOr {
+
+	public static void main(String[] args) {
+		boolean r1 = true && true && true;					//  && AND 연산자, AND 연산자는 전부 true 일때만 true
+		System.out.println("r1: " + r1);
+		
+		boolean r2 = true && true && false;
+		System.out.println("r2: " + r2);
+		
+		boolean r3 = true || false || false;
+		System.out.println("r3: " + r3);
+		
+		boolean r4 = false || false || false;
+		System.out.println("r3: " + r4);
+				
+	}
+
+}

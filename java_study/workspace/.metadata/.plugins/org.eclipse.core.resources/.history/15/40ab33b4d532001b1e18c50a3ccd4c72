@@ -1,0 +1,10 @@
+package com.koreait.first.method;
+
+public class Method3 {
+
+	public static void main(String[] args) {
+		
+		
+	}
+
+}

@@ -1,0 +1,27 @@
+package com.koreait.first.obj;
+
+public class CarTest2 {
+
+	public static void main(String[] args) {
+		Car car1 = new Car();					//대문자로 시작하는 애들은 항상 주소값이 들어간다.
+		car1.name = "페라리";
+		car1.cc = 5000;
+		car1.color = "붉은색";
+		
+		Car car2 = new Car();
+		car2.name = car1.name;
+		car2.cc = car1.cc;
+		car2.color = car1.color;
+		
+		car1 = car2;								//주소값을 같게 만들으라는 말이다.
+		
+		car1.drive();
+		car2.drive();
+		
+		System.out.println(car1 == car2);			//안에 값이 달라도 주소값이 다르니 당연히 false
+		
+		
+		
+	}
+
+}

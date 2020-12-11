@@ -1,0 +1,10 @@
+package com.koreait.first.obj2;
+
+public class InheriTest2 {
+
+	public static void main(String[] args) {
+		ClassD cD = new ClassD();
+		
+		System.out.println(cD.getName() + cD.getAge());
+	}
+}

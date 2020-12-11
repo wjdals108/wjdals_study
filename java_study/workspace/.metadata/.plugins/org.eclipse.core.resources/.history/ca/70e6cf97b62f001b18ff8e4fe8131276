@@ -1,0 +1,24 @@
+package com.koreait.first.loop;
+
+public class For {
+
+	public static void main(String[] args) {
+		
+		int count=0;
+		
+		for(int i=0; i<10; i++) {
+			System.out.println("Hi~ " + i);
+		}
+		
+		System.out.println("-----------------");
+		
+		for(int i=50; i<101; i++) {
+			count++;
+			System.out.println(i);
+		}
+		
+		System.out.printf("총 %d번 출력하셨습니다.", count);
+		
+	}
+	
+}

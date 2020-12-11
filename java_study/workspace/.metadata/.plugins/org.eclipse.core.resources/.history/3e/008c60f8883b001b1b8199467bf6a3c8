@@ -1,0 +1,14 @@
+package com.koreait.first.card;
+
+public class CardMain {
+
+	public static void main(String[] args) {
+		Card[] objArr = new Card[52];
+		
+		for(int i=0; i<objArr.length; i++) {
+			objArr[i] = new Card();
+		}
+		
+	}
+
+}

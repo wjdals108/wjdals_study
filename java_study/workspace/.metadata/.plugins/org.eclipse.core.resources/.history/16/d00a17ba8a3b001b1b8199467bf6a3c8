@@ -1,0 +1,23 @@
+package com.koreait.first.card;
+
+public class CardMain {
+
+	public static void main(String[] args) {
+		
+		Card[] objArr = new Card[52];
+		
+		final String[] shapeArr = {"spade", "heart", "clover", "diamond"};
+		final String[] valueArr = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
+		
+		for(int z=0; z<objArr.length; z++) {
+			for(int i=1; i<shapeArr.length+1; i++) {
+				for(int j=1; j<valueArr.length+1; j++) {
+					objArr[z] = new Card(shapeArr[i-1], valueArr[j-1]);
+				}
+			}
+		}
+		
+		
+	}
+
+}

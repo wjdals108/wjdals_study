@@ -1,0 +1,14 @@
+package com.koreait.first;
+
+public class AndOr {
+
+	public static void main(String[] args) {
+		boolean r1 = true && true && true;
+		System.out.println("r1: " + r1);
+		
+		boolean r2 = true && true && false;
+		System.out.println("r2: " + r2);
+				
+	}
+
+}

@@ -1,0 +1,6 @@
+package com.koreait.first.vending;
+
+public class VendingMachine {
+	private Can[] canArr;
+	
+}

@@ -1,0 +1,16 @@
+package com.koreait.first.db;
+
+import java.sql.Connection;
+
+public class DbUtils {
+	public static Connection getCon() {
+		Connection con = null;
+		
+		final String URL = "";
+		final String USER = "root";
+		final String PW = "koreait2020";
+		
+		
+		return con;
+	}
+}

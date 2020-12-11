@@ -1,0 +1,10 @@
+package com.koreait.first.control;
+
+public class If4 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

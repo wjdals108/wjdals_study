@@ -1,0 +1,32 @@
+package com.koreait.first.vending;
+
+import java.util.Scanner;
+
+public class VendingMachineTest {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		
+		
+		
+		System.out.println("메뉴선택(0:종료)");
+		
+		
+	}
+
+}
+
+class Menu {
+	private int coke = 500;
+	private int sprite = 600;
+	private int hwanta = 700;
+	private int sol = 800;
+	private int sum;
+	
+	int buy(int menu) {
+		sum += menu;
+		
+		return sum;
+	}
+}

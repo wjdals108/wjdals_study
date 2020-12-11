@@ -1,0 +1,12 @@
+package com.koreait.first.obj;
+
+public class ObjTest3 {												//파일명과 같은 class 앞에만 public을 붙일 수 있다.
+
+	public static void main(String[] args) {
+		
+		int[] arr = {4,7,1,9,3};
+		
+		System.out.println(arr.toString());
+		
+	}
+}

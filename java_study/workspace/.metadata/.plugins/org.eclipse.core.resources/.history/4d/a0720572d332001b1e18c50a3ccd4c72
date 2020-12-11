@@ -1,0 +1,42 @@
+package com.koreait.first.method;
+
+public class Method1 {
+
+	public static void main(String[] args) {
+		sum(1, 2);
+		sum(10, 20);
+		sum(100, 2500);
+		sum("값", 1, 2);
+		sum(10, 20, "값");
+	}
+	
+	public static void sum(int n1, int n2) {
+		System.out.printf("%d + %d = %d\n", n1, n2, n1+n2);
+	}
+	
+	//오버로딩 : 메소드 이름이 똑같은거를 여러개 만들 수 있는거
+	public static void sum(int n1, int n2, int n3) {
+		System.out.printf("%d + %d = %d\n", n1, n2, n1+n2);
+	}
+	
+	/*	//단, 오버로딩할때 메소드가 완전히 똑같은거는 불가능하다.
+	public static void sum(int n1, int n2, int n3) {
+		System.out.printf("%d + %d = %d\n", n1, n2, n1+n2);
+	}
+	*/
+	
+	//오버로딩 가능
+	public static void sum(int n1, int n2, String str) {
+		System.out.printf("%s : %d + %d = %d\n", str, n1, n2, n1+n2);
+	}
+	//위에꺼랑 Parameter의 순서만 다를뿐인데 구분가능해서 오버로딩이 가능하다. 즉, 오버로딩은 구분만 할 수 있으면 얼마든지 오버로딩이 가능하다.
+	/*
+	public static void sum(String str, int n1, int n2) {
+		System.out.printf("%s : %d + %d = %d\n", str, n1, n2, n1+n2);
+	}
+	*/
+	
+	public static void sum(String str, int n1, int n2) {
+		sum(str, n1, n2);
+	}
+}

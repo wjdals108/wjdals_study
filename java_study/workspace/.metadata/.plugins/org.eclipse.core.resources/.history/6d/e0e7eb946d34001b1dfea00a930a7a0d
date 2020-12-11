@@ -1,0 +1,26 @@
+package com.koreait.first.obj;
+
+public class ObjTest5  {
+
+	public static void main(String[] args) {						//파일명과 똑같은 이름의 클래스만 앞에 public을 붙일 수 있다. (안붙여도됨)
+		NumberBox2 nB = new NumberBox2();
+		nB.a=10;
+		nB.b=20;
+		
+		NumberBox2 nB2 = new NumberBox2();
+		nB2.a = 33;
+		nB2.b = 44;
+		
+		System.out.println(nB.sum());
+		System.out.println(nB2.sum());
+	}
+}
+
+class NumberBox2{
+	int a;
+	int b;
+	
+	int sum() {
+		return a+b;
+	}
+}

@@ -1,0 +1,32 @@
+package com.koreait.first.test;
+
+import java.util.Arrays;
+
+public class ArrayListTest_3 {
+	
+		//안됨 이유를 모르겠음
+	
+	void add(int inputNumber, int[] intArr) {
+		
+		int[] temp = new int[intArr.length+1];
+		for(int i=0;i<intArr.length;i++) {
+			temp[i] = intArr[i];
+		}
+		temp[intArr.length] = inputNumber;
+		intArr = temp;
+	}
+	
+	public static void main(String[] args) {
+		
+		ArrayListTest_3 a = new ArrayListTest_3();
+		
+		int[] intArr = new int[0];
+		
+		a.add(10,intArr);
+		a.add(20,intArr);
+		
+		System.out.println(Arrays.toString(intArr));
+
+	}
+	
+}

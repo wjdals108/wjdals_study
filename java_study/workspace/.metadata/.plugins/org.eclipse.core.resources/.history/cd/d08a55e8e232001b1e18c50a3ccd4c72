@@ -1,0 +1,28 @@
+package com.koreait.first.method;
+
+public class MethodStar {
+
+	public static void main(String[] args) {
+		printStarTri(5);
+	}
+	
+	public static void printStarTri(int star) {
+		for(int i=0; i<star; i++) {
+			printStar(i);
+			System.out.println();
+		}
+	}
+	
+	public static void printStarSquare(int star) {
+		for(int i=0; i<star; i++) {
+			printStar(star);
+			System.out.println();
+		}
+	}
+	
+	public static void printStar(int star) {
+		for(int i=0; i<star; i++) {
+			System.out.print("*");
+		}
+	}
+}

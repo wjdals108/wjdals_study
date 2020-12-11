@@ -1,0 +1,37 @@
+package com.koreait.first.obj2;
+
+public class ClassA {
+	private String name;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+}
+
+class ClassB extends ClassA{
+	private int age;
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+	
+}
+
+class ClassC extends ClassB{
+	
+	
+}
+
+class ClassD extends ClassC{
+	
+	
+}

@@ -1,0 +1,10 @@
+package com.koreait.first.obj2;
+
+public class InheriTest3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

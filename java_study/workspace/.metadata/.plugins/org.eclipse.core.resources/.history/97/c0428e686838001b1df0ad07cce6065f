@@ -1,0 +1,16 @@
+package com.koreait.first.vending;
+
+public class VendingMachineTest4 {
+
+	public static void main(String[] args) {
+		VendingMachine vm = new VendingMachine();
+		
+		Can coke = new Can("콜라", 500);
+		Can sprite = new Can("사이다", 600);
+		Can hwanta = new Can("환타", 700);
+		Can sol = new Can("솔의눈", 800);
+		Can desawa = new Can("데자와", 900);
+		
+	}
+
+}

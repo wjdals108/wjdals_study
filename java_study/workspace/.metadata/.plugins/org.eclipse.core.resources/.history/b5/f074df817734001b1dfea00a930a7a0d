@@ -1,0 +1,15 @@
+package com.koreait.first.obj;
+
+public class StaticTest1 {
+
+	public static void main(String[] args) {
+		
+		
+		
+	}
+
+}
+
+class Tv {
+	
+}

@@ -1,0 +1,12 @@
+package com.koreait.first.card;
+
+public class CardMain {
+
+	public static void main(String[] args) {
+		Card c1 = new Card("spade", "2");
+		
+		System.out.println(c1.getShape());
+		
+	}
+
+}

@@ -1,0 +1,17 @@
+package blackjack;
+
+import java.util.Scanner;
+
+public class CardSet {
+	private Scanner scan;
+	private Card[] cardArr;
+	
+	public CardSet() {
+		
+	}
+	
+	
+	
+	
+
+}
