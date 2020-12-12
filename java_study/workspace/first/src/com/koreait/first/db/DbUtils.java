@@ -8,6 +8,7 @@ public class DbUtils {
 	public static Connection getCon() {
 		Connection con = null;
 		
+		
 		final String URL = "jdbc:mysql://localhost:3306/test";		//3306은 포트번호, test는 DB이름
 		final String USER = "root";
 		final String PW = "koreait2020";
