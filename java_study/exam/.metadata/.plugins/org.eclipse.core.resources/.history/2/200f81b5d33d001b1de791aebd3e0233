@@ -1,0 +1,13 @@
+package exam;
+
+public class Card {
+		private final String shape;
+		private final String value;
+		
+		private Card(String shape, String value) {
+			this.shape
+			
+		}
+		
+
+}

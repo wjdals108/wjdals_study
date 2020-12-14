@@ -1,0 +1,17 @@
+package exam;
+
+public class Card {
+
+	public static void main(String[] args) {
+		private final String shape;
+		private final String value;
+		
+		private Card(String shape, String value) {
+			this.shape
+			
+		}
+		
+		
+	}
+
+}

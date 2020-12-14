@@ -1,0 +1,14 @@
+package exam;
+
+import java.sql.Connection;
+
+public class DbUtils {
+	Connection con = null;
+	
+	final String URL = "jdbc:mysql://localhost:3306/test";
+	final String USER = "root";
+	final String PW = "koreait";
+	
+	con = drivermanager.getConnection(URL, USER, PW);
+	
+}
