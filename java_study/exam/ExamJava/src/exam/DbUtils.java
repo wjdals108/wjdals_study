@@ -5,6 +5,17 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DbUtils {
+	private static DbUtils instance;
+	
+	private DbUtils() {};
+	
+	public static DbUtils getInstance() {
+		if(instance == null) {
+			instance = new DbUtils();
+		}
+		return instance;
+	}
+	
 	public static Connection getCon() {
 		Connection con = null;
 		

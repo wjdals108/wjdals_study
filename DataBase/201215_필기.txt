@@ -1,0 +1,334 @@
+HeidiSQL
+DataBase를 사용? 관리 할 수 있는 툴 (종류는 여러가지이다)
+
+마리아db (mysql이랑 크게 차이없다 거의 똑같다)
+
+조합
+utf8mb4_general_ci
+
+database는 대문자 소문자 구별 안함
+
+
+
+
+
+
+
+
+
+
+
+
+dml ddl dcl 검색하면 데이터베이스에 쓰는 명령어 볼 수 있다.
+
+dml : 데이터조작어 - SELECT INSERT UPDATE DELETE
+SELECT가 조금 어렵다
+
+CRUD 게시판 생각하면 이해하기 쉬움
+insert - create : 생성
+select - read : 읽기
+update - update : 수정
+delete - delete : 삭제
+
+우리는 결국 CRUD를 할 줄 알아야한다. 즉 dml을 할 줄 알아야하는거다
+
+ddl : 데이터정의어 - CREATE ALTER DROP RENAME TRUNCATE (가끔 쓰기는 한다)
+dcl : 데이터 제어어 - GRANT REVOKE (잘 쓰지는 않음 개발자들은)
+TCL : 트랜잭션 제어어 - COMMIT ROLLBACK SAVEPOINT (일단 DB 좀 배우고 나서)
+
+테이블 이름 지을때 CREATE나 TABLE 같은거는 예약어이니깐 쓰지 않는편이다
+그래서 주로 언더바 _ 를 붙인다. t_이런식으로
+
+
+
+
+
+
+주석 쓸 때는 #붙이고 쓰면된다
+-- 이렇게도 됨 --하고 한칸띄어야함
+
+
+
+
+
+실행할때는 ; 안쪽에서 ctrl + enter
+
+
+
+
+
+
+CREATE TABLE t_user(
+	i_user INT UNSIGNED PRIMARY KEY,
+	nm VARCHAR(10) NOT NULL,
+	id_number CHAR(14) NOT NULL,
+	r_dt DATETIME DEFAULT NOW()
+);
+
+앞에부분은 colomn 이름 ---- i_user, nm, id_number, r_dt
+두번째꺼는 타입
+* VAR 붙이면 최대 (숫자) 만큼 변할 수 있다는 뜻이다. VAR 안 붙이는게 속도가 더 빠르긴 하지만 주로 VAR를 붙인다. 데이터 생각해보면 딱 자리수가 떨어지는게 별로 없다.
+VARCHAR(10)과 CHAR(10)의 차이
+VARCHAR(10)은 1자리의 수가 오면 1개짜리 크기만 만들어지고 2자리의 수가 오면 2개짜리 크기가 만들어짐 최대 10개까지 
+(10)은 제약조건을 주는것이다.
+CHAR(10)은 무조건 10개짜리 크기가 만들어진다. 그냥 공간을 만들어준다는 얘기임 무조건 10자리를 넣을 필요는 없음
+(숫자)가 없으면 최대까지라고 생각하면 된다.
+정수형타입에서 (숫자) 는 자리수를 의미한다.
+(1)하면 한자리수
+(2)하면 두자리수 이런식으로
+DATETIME 은 날짜정보와 시간정보
+
+
+colomn명과 타입은 필수로 있어야한다.
+
+SIGNED, UNSIGNED 숫자형에 있는거 부호가 있는, 부호가 없는
+기본은 SIGNED
+UNSIGNED 는 음수저장이 안됨 대신 양수부분의 범위가 늘어남
+
+
+
+PRIMARY KET, NOT NULL, DEFAULT 은 제약조건
+
+PRIMARY KET
+얘는 무조건 있어야함 테이블에
+여러개 만들수도 있긴 함
+없어도 만들어지기는 함
+구분지어주는 역할
+사람으로 따지면 주민등록번호 생각하면됨(무조건 다르잖아)
+
+NOT NULL
+DATABASE는 값이 없다면 무조건 NULL을 쓴다.
+NOT NULL의 뜻은 값이 무조건 있어야한다는 뜻이다. 없으면 에러뜸
+NULL이 기본값임(안써도 된다는뜻이다.)
+
+DEFAULT NOW()
+DEFAULT NOW()는 값을 안넣으면 NOW()를 쓰겠다 NOW에 어떤값을 넣고 쓴다는 얘기임
+값 넣는거 무시하겠지
+
+
+
+
+INSERT INTO t_user
+( i_user, nm, id_number)
+VALUES
+(1, '홍길동', '950212-1770908');
+
+INSERT INTO t_user
+( i_user, nm, id_number, r_dt)
+VALUES
+(2, '아무개', '950212-1770908', '2020-11-15 12:12:10');
+
+영향받은행 : 1 
+밑에 이거 뜨는게 생각보다 중요하다
+INSERT 할때는 저게 나와야함
+값을 넣었다는 뜻이니깐
+
+INSERT할 때, 값이 들어가는 순서는 중요하지않다.
+SELECT에서 얼마든지 바꿔줄수있기때문에
+DATA값만 중요하다.
+
+
+
+SELECT * FROM t_user;
+#t_user 테이블의 데이터를 다 보여줘라
+
+SELECT i_user, nm FROM t_user;
+#적은 i_user, nm  column명의 데이터값만 보여줘라
+
+SELECT i_user, nm, r_dt FROM t_user 
+ORDER BY i_user DESC;
+#i_user를 내림차순으로 i_user, nm, r_dt를 보여줘라
+
+SELECT i_user, nm, r_dt FROM t_user 
+ORDER BY i_user ASC;
+#i_user를 오름차순으로 i_user, nm, r_dt를 보여줘라
+
+
+WHERE i_user = 10 
+#i_user 의 10번째 줄 값을 가져와라
+
+WHERE i_user = 3 OR i_user = 2
+#이런식으로 2개의 값 가져오는거 가능
+
+WHERE i_user = 3 AND i_user = 2
+#AND는 같은 colomn에서 둘다 true인 경우는 거의 없다 쓸려면
+
+WHERE i_user = 3 AND nm = '아무개'
+#이런식으로 써야한다
+
+WHERE i_user >= 1 AND i_user <=3
+#이런식으로 크기 비교하는 연산자 사용해서도 가능
+
+WHERE nm LIKE '%무%';
+#nm colomn에 무가 들어가는 거를 다 가져와라 라는 뜻
+
+WHERE nm LIKE '무%';
+#nm colomn에 무로 시작하는거를 가져와라라는 뜻
+
+WHERE nm LIKE '%무';
+#nm colomn에 무로 끝나는거를 다 가져와라 라는 뜻
+
+
+
+WHERE 절은 resource를 많이 잡아먹는다
+많이쓰면 속도가 느려진다
+
+UPDATE t_user
+SET nm = '감자탕'
+WHERE i_user = 6;
+#UPDATE는 수정하는 명령어, nm colomn에 감자탕으로 바꿔라 i_user = 6인 것을
+UPDATE 문에 WHERE 는 거의 필수로사용한다.
+WHERE를 안썼다면 모든 nm colomn 값이 감자탕으로 바뀐다
+그러므로 UPDATE문에서는 WHERE문 PrimaryKey를 불러와서 바꿔준다.
+
+
+UPDATE t_user
+SET nm = '엉덩이'
+, id_number = '1111-2222'
+WHERE i_user = 7;
+#한번에 여러값을 바꾸고 싶다면 , 를 사용해서 작성해주면 된다.
+
+UPDATE t_user
+SET nm = CONCAT(nm, '탕이')
+WHERE i_user = 6;
+#i_user가 6인 DATA에 nm칼럼의 값에 탕이 라는 문자열을 더해준다.
+
+
+DELETE FROM t_user
+WHERE i_user = 9;
+#i_user가 9인 값을 삭제한다.
+마찬가지 WHERE 안써주면 다 삭제한다
+
+
+INSERT INTO t_user2
+(i_user, nm, id_number, r_dt)
+SELECT i_user, nm, id_number, r_dt
+FROM t_user;
+#t_user 테이블의 DATA들을 t_user2 테이블로 넣어주는거다
+
+
+
+
+DATABASE 에서 제일 어려운것은 TABLE 구조
+그리고 SELECT문
+
+
+
+정규화
+제1정규화 : 한 colomn에는 하나의 값만 들어가야한다.
+제2정규화 : 옆으로 늘리지말고 밑으로 늘려라 (colomn 수를 늘리지말고 테이블을 더 만들어서 DATA 값을 늘려줘라)
+
+
+취미를 예로들었을때
+한명이 여러개의 취미를 가지는거 1:다
+취미도 한명만이 아니라 여러명이 가질 수 있으니깐 1:다
+사람과 취미는 다:다 라고 한다.
+
+
+
+
+
+
+CREATE TABLE t_user_hobby(
+	i_user INT UNSIGNED,
+	i_hobby INT UNSIGNED,
+	PRIMARY KEY(i_user, i_hobby)
+);
+#PRIMARY KEY를 2개에 줄때는 밑에 저런식으로 써야한다.
+CREATE TABLE t_user_hobby(
+	i_user INT UNSIGNED PRIMARY KEY
+	i_hobby INT UNSIGNED PRIMARY KEY
+);
+요래 쓰면 안됨
+
+
+
+
+
+
+INSERT INTO t_user_hobby
+(i_user, i_hobby)                    -> 이부분은 안쓰고 순서대로 넣으면 되기는 한다. 근데 하지마라 에러뜨기 쉽다.
+VALUES
+(1, 1);
+
+
+
+
+SELECT * 
+FROM t_user_hobby as A;
+#alias 알리아스 별명 as 안써도 됨 테이블명이 길때 써주면 유용하다
+주로 table 옆에는 그냥 쓰고 colomn 옆에는 as 붙여서 쓰자
+; 안에서만 쓰고 끝나면 못 씀
+
+DB는 쿼리문 위에서부터 순서대로 읽는게아님(JAVA랑 다름)
+
+
+
+SELECT t_user_hobby.i_hobby, t_user.nm, t_user.id_number 
+FROM t_user_hobby
+LEFT JOIN t_user
+ON t_user_hobby.i_user = t_user.i_user
+;
+#보고싶은거를 늘릴때는 SELECT 옆에를 늘려주면 된다.
+JOIN이 뭔지 잘 확인하자
+
+SELECT B.*, A.*, C.*
+FROM t_user_hobby A
+LEFT JOIN t_user B
+ON A.i_user = B.i_user
+LEFT JOIN t_hobby C
+ON A.i_hobby = C.i_hobby
+;
+
+
+
+SELECT 
+	B.i_user AS b_i_user
+	, A.i_user, A.i_hobby
+	, C.i_hobby AS c_i_hobby
+FROM t_user_hobby A
+LEFT JOIN t_user B
+ON A.i_user = B.i_user
+LEFT JOIN t_hobby C
+ON A.i_hobby = C.i_hobby
+;
+
+
+
+SELECT 
+	A.*
+	, ifnull(B.nm, '사람없음') AS user_nm
+	, ifnull(B.id_number, '') AS id_number
+	, C.nm AS hobby_nm
+FROM t_user_hobby A
+LEFT JOIN t_user B
+ON A.i_user = B.i_user
+LEFT JOIN t_hobby C
+ON A.i_hobby = C.i_hobby
+;
+#t_user_hobby 테이블이 기준이 되므로 t_user_hobby가 행이 4개면 무조건 4개 읽어준다
+
+
+
+SELECT 
+	A.*
+	, ifnull(B.nm, '사람없음') AS user_nm
+	, ifnull(B.id_number, '') AS id_number
+	, C.nm AS hobby_nm
+FROM t_user_hobby A
+INNER JOIN t_user B
+ON A.i_user = B.i_user
+LEFT JOIN t_hobby C
+ON A.i_hobby = C.i_hobby
+;
+
+
+CREATE TABLE t_user_hobby(
+	i_user INT UNSIGNED,
+	i_hobby INT UNSIGNED,
+	PRIMARY KEY(i_user, i_hobby),
+	FOREIGN KEY (i_user) REFERENCES t_user(i_user),
+	FOREIGN KEY (i_hobby) REFERENCES t_hobby(i_hobby)
+);
+FOREIGN KEY - 외래키 (제약조건 같은거)
+이거를 걸어놓으면 t_user 테이블에 있는 i_user, i_hobby 값과 다르면 INSERT 시킬 수 없다.
