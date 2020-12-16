@@ -1,0 +1,123 @@
+DCL - 사용자 생성, 권한 주기 등
+DDL - DB생성, TABLE 생성, 수정, 삭제
+생성 : CREATE
+수정 : ALTER
+삭제 : DROP
+DML - CRUD 데이터 생성, 읽기, 수정, 삭제
+생성 : INSERT
+일기 : SELECT
+수정 : UPDATE
+삭제 : DELETE
+
+
+정규화
+
+CREATE TABLE t_product(
+	product_no INT UNSIGNED PRIMARY KEY,
+	product_nm VARCHAR(10) NOT NULL,
+	stock_qty INT UNSIGNED
+	);
+	
+INSERT INTO t_product
+(product_no, product_nm, stock_qty)
+VALUE
+(1001, '모니터', 2000), (1007, '마우스', 9000), (1201, '키보드', 2100);
+	
+CREATE TABLE t_user(
+	user_no INT UNSIGNED PRIMARY KEY,
+	addr VARCHAR(10) NOT NULL
+	);
+
+INSERT INTO t_user
+(user_no, addr)
+VALUE
+(100, '서울'), (200, '부산'), (300, '광주');
+
+CREATE TABLE t_order(
+	order_no VARCHAR(10) NOT NULL PRIMARY KEY,
+	user_no int UNSIGNED,
+	order_date DATE DEFAULT NOW()
+	);
+
+INSERT INTO t_order
+(order_no, user_no, order_date)
+VALUE
+('A345', 100, '2012-12-10'), ('A210', 300, '2012-12-11'), ('B230', 200, '2012-12-12'), ('D347', 200, '2012-12-13');	
+
+
+CREATE TABLE t_order_d(
+	order_no VARCHAR(10) NOT NULL,
+	product_no INT UNSIGNED,
+	order_qty INT UNSIGNED,
+	PRIMARY KEY(order_no, product_no),
+	FOREIGN KEY (order_no) REFERENCES t_order(order_no),
+	FOREIGN KEY (product_no) REFERENCES t_product(product_no)
+);
+
+
+INSERT INTO t_order_d
+(order_no, product_no, order_qty)
+VALUE
+('A345', 1001, 150), ('A345', 1007, 400), ('A210', 1007, 600), ('B230', 1007, 700), ('D347', 1201, 700), ('D347', 1001, 300);	
+
+SELECT t_product.*, t_order.*, t_order_d.*
+FROM t_order_d
+LEFT JOIN t_order
+ON t_order_d.order_no = t_order.order_no
+LEFT JOIN t_product
+ON t_order_d.product_no = t_product.product_no
+;
+	
+	#product_no INT UNSIGNED,
+	#product_nm VARCHAR NOT NULL,
+	#stock_qty INT UNSIGNED,
+	#order_no varchar not null,
+	#user_no int unsigned,
+	#addr VARCHAR NOT NULL,
+	#order_qty INT unsigned,
+	#order_date varchar not null
+
+
+하던거
+
+
+
+https://nirsa.tistory.com/107
+정규화 참조
+
+
+
+
+
+
+CREATE TABLE t_student(
+	stu_number INT UNSIGNED PRIMARY KEY,
+	stu_name VARCHAR(10) NOT NULL,
+	stu_major VARCHAR(10) NOT NULL,
+	stu_add VARCHAR(10) NOT NULL
+);
+
+
+CREATE TABLE t_b(
+	class_name VARCHAR(10) NOT NULL PRIMARY KEY,
+	class_place VARCHAR(10) NOT NULL
+);
+
+CREATE TABLE t_c(
+	stu_number INT UNSIGNED,
+	class_name VARCHAR(10) NOT NULL,
+	PRIMARY KEY(stu_number, class_name),
+	FOREIGN KEY (stu_number) REFERENCES t_student(stu_number),
+	FOREIGN KEY (class_name) REFERENCES t_b(class_name)
+);
+#나의 한계다
+
+http://dblab.duksung.ac.kr/mssql/%EC%98%88%EC%A0%9C%EC%86%8C%EC%8A%A4/7%EC%9E%A5_%EC%A0%95%EA%B7%9C%ED%99%94-2013%EB%85%8409%EC%9B%94.pdf
+참조
+
+***********정규화를 시킬때 중복되는 문자열을 최대한 빼준다고 생각하자, 문자열을 연결시키는거보다 int형으로 pk를 만들어서 연결시켜주는게 퍼포먼스가 좋다.(위에꺼 바꿔보자)
+
+
+
+
+
