@@ -1,0 +1,9 @@
+트랜잭션
+인덱스
+check
+알아서1씩증가
+
+
+visual studio code
+https://www.w3schools.com/
+!+enter
