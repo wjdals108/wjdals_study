@@ -1,0 +1,596 @@
+<!-- html 1 -->
+<head>
+    <link rel="stylesheet" href="/css/main.css" type="text/css">  <!-- rel은 정보이고 href은 경로 type도 넣는게 좋음 -->
+                                         css라는 폴더 안의 main.css라는 문서
+
+
+블록 요소와 인라인요소
+
+1. 블록 요소 (레이아웃잡는 요소로 쓰기)
+   div, h1, p
+   1. 사용 가능한 최대 가로 너비를 사용한다
+   2. 크기를 지정할 수 있다	
+   3. width: 100%; height: 0%;으로 시작
+   4. 수직으로 쌓인다
+   5. margin, padding 위, 아래, 좌, 우  사용 가능하다.
+   6. display: inline;값을 입력하면 인라인 요소처럼 됨
+2. 인라인 요소 (텍스트 작업 요소로 쓰기)
+   span, img
+   1.필요한 만큼의 너비를 사용한다 (안의 content만큼)
+   2. 크기를 지정할 수 없다.
+   3. width: 0; height: 0;으로 시작
+   4. 수평으로 쌓인다
+   5. margin, padding 위, 아래는 사용할 수 없다
+   6. 인라인은 가로 세로너비를 가질수없지만
+      display: block;값을 을 입력하면 가질 수 있게 된다.
+      (인라인 요소를 강제적으로 블럭으로 바꾸었음)
+
+엇그리드 타이포쓰는 방법
+타이포 하나에 마진 패딩 적용해놓고
+다른 하나 만들어서는 그건 적용안하기
+
+_________________________________________________________________________________________________________________________________
+HEAD
+
+head부분에서 name을 썼다면 http_equiv를 문장안에서 같이 사용할 수 없다.
+1. <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    인터넷 익스플로러 최신버전으로 사용할 수 있게 해줌
+2. <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        웹화면                     디바이스에 맞춰서                       
+    반응형 웹 만들때 사용하는 것
+3. crossorigin 속성 - 서로 다른 도메인에서 데이터를 어떻게 주고받을지
+4. hreflang 링크된 리소스의 언어 *href이 있을때만 사용 (안써도 됨 조언같은거임)
+5. style 태그에서 type="text/css"는 기본 포함되어있다
+6. MIME 타입 = LINK로 연결하는 문서의 type종류
+   설명 : https://developer.mozilla.org/ko/docs/Web/HTTP/Basics_of_HTTP/MIME_types
+7. base 요소 = 문서에 포함된 모든 상대 URL들의 기준 URL을 나타냅니다.
+    base href="./css/"라고 하면 css라고 만들어놓은 파일안에서 모든 문서를 참고함
+
+BODY
+
+1. <header></header>(block요소)안에 또 header를 집어넣을 수 없다. 따로 두개 만드는것은 가능하다
+   <adress></adress>안에도 불가
+2. footer태그 (block요소)는 가장 가까운 구획화 콘텐츠나 구획화 루트의 푸터를 나타냅니다. 푸터는
+    일반적으로 작성자 구획, 저작권 데이터, 관련된 문서의 링크에 대한 정보를 포함합니다
+   푸터의 성질은 헤더와 비슷해 푸터 안에 푸터나 헤더가 들어가지 못한다.
+
+헤더  : 로고, 메뉴
+푸터  : 주소, 사업자 내용 등
+메인  : 핵심
+
+
+3. H1~H6는 1에 가까울수록 글자가 크다 (대주제 소주제 등등)
+     그러나 이 크기는 브라우저마다 다르기 때문에 디자인에 적용할 수  없다
+     폰트의 크기를 줄이기 위해 낮은 단계를 사용하면 안된다. 이것은 그저 "주제기둥구조"라 생각해야한다
+     (*제목 단계를 건너뛰는 것을 피해야 한다)
+4. main (block요소) 문서의 핵심 주제나 애플리케이션의 핵심 기능성에 대한 콘텐츠
+    /!-- IE(인터넷 익스플로러)지원하지 않음 --/
+    /!-- 한 문서에 하나의 <main>요소만 가능 --/
+5.  article (block요소) 독립적으로 구분되거나 재사용 가능한 영역을 설정한다
+    (매거진/ 신문 기사, 블로그 등)
+    -<h1><h6>를 포함하여 식별
+    -작성일자와 시간을 <time>의 datetime 속성으로 작성
+6. section (block요소) 문서의 일반적인 영역을 설정
+   -<h1><h6>를 포함하여 식별
+   -아티클 안에 섹센이 있을 수 있고, 섹션안에 아티클이 있을 수 있다
+
+대충 뭐 만들기 좋은 태그
+article div section
+
+7. aside (block 요소) 문서의 별도 콘텐츠 설정
+   보통 광고나 기타 링크 등의 사이드바를 설정
+
+8. nav (block 요소) 네비게이션 바 만들어줌 보통 ul ol 메뉴 묶음
+9. adress (block 요소) body, article, footer 등에서 연락처 정보를 제공하기 위해 포함해 사용
+    - 이메일, 전화번호, 주소 등
+     ex) html
+          <adress>
+	<a
+	href="malito:jim@rock.com">jim@rock.com</a><br>
+	<a
+	href="tel:+13115552368">(311) 555-2368</a>
+          </adress>
+
+          output
+          jim@rock.com   - 메일 링크
+         (311) 555-2368   - 전화 링크
+10. ol, ul 태그는 li 태그만 포함가능하다
+     <ol start="4"> 4부터 번호 매김
+11. <dl>집합 영역 <dd>정의 <dt>설명
+     <dl>안에는 dd와 dt만 들어감 = 스타일링에 제한이 생겨서 ul li태그를 사용하기도 함
+      
+	<dl>
+	    <dt>Coffee</dt>
+	    <dd>Coffee is a brewed drink prepred from rasted coffee beans, the seeds of berries certain Coffea species.</dd>	
+	    <dt>Milk</dt>
+	    <dd>Milk is a nutrient-richm white liquid food produced by~~</dd>
+	</dl>
+             이것은 아래의 ul과 동일하다
+             <ul>
+                 <li>
+                     <dfn>Coffee</dfn>
+	         <p>Coffee is a brewed drink prepred from rasted coffee beans, 
+                            the seeds of berries certain Coffea species.</p>
+	    </li>
+	    <li>
+	          <dfn>Milk</dfn>
+	          <p>Milk is a nutrient-richm white liquid food produced by~~</p>
+	    </il>
+
+12. <pre> 서식이 미리 지정된 텍스트를 설정
+     -텍스트의 공백과 줄바꿈을 유지하여 표시할 수 있다. (p안해도 됨)
+     - 기본적으로 monospace(고딕) 글꼴 계열로 표시 됨
+
+13.blockquote 일반적인 긴 인용문을 설정
+
+
+지금까지는 다 block요소 였었다
+-----------------------------------------------------------------------------------------------------------------
+
+이제는 inline요소
+
+1. A     다른 페이지, 같은 페이지 위치(#, 해시 태그), 파일, 이메일 주소, 전화번호 등 다른 url로 연결
+          할 수 있는 하이퍼링크를 설정(anchor, 외부로 보내기)
+   download  이 요소가 리소스를 다운로드하는 용도로 사용됨을 의미
+   href          링크 url					       url
+   hreflang     링크 url(페이지) 언어 (href languge)		       ko, en.....
+   rel             현재 문서와 링크 url의 관계                                        license, prev, next
+   target         링크 url의 표시(브라우저 탭) 위치                                 _self, _blank
+   type           링크 url의 MIME 타입				       text, html
+
+   ***inline 요소라서 사용하기 불편, 그래서 display: block 형식으로 바꾸는 경우가 많다.
+
+   다른페이지는 _blank 처럼 새로운 탭을 띄우거나 하는 것
+   같은 페이지로 이동하는 예시(title1이라는 같은 이름의 페이지로 이동할 수 있다.
+   <body> 목차
+	<ul>              id를 의미하는 #선택자
+	    <li><a href="#title1">제목1</a></li>
+	    <li><a href="#title2">제목2</a></li>
+	</ul>
+	<h2 id="title1">제목1</h2>
+	<h2 id="title2">제목2</h2>
+	<h2 id="title3">제목3</h2>
+    </body>
+    
+     h2 {
+        padding-bottom: 1000px;
+     #title1
+
+2. abbr (Abbreviation) 약어를 지정 보통 title 속성을 사용하여 전체 글자나 설명을 제공
+
+   Using <abbr  title="HyperText Markup Language">HTML</abbr> is fun and easy!
+                      약어 HTML에 대한 설명
+
+
+인라인 텍스트 관련 태그
+b  mark em  strong  i가 매우 헷갈린다 그러므로 사용 방법을 알자
+
+3. b  (Bring Attention) 문체가 다른 글자의 범위를 설정
+	-특별한 의미를 가지지 않으
+	-읽기 흐름에 도움을 주는 용도로 사용
+	-다른 태그가 적합하지 않은 경우 마지막 수단
+	-기본적으로 글자가 Bold하게 표현
+4. mark (mark text)  사용자의 관심을 끌기 위해 하이라이팅할 때 사용(형광펜 사용과 비슷)
+            -기본적으로 형광펜 사용한 것 처럼 글자 배경 노란색으로 표시
+5. em (emphasis) 단순한 의미 강조를 표시
+            -중첩이 가능
+            -중첩될수록 강조 의미가 강해짐
+            -정보통신보조기기 등에서 구두 강조로 발음됨
+            -기본적으로 이탤릭체로 표시
+6. strong 의미의 중요성을 나타내기 위해 사용 (**강조와 중요성은 다른것이다!)
+            -기본적으로 글자가 Bold하게 나옴
+7. i (icon)  em,stron,mark,cite,dfn 등에서 표현할 수 있는 적합한 의미가 아닌 경우 사용
+            -평범한 글자와 구분(아이콘/ 특수기호 같은)하기 위해 사용
+            -기본적으로 이탤릭체
+
+외부 라이브러리는 css위에 써서 덮어써주는것이 좋다
+
+8. dfn (definition) 용어를 정의할 때 사용
+9. cite                 창작물에 대한 참조를 설정 (책, 논문, 영화, tv프로그램, 노래, 게임 등의 제목)
+10. q  (inline quotation) 짧은 인용문을 설정
+11. u (underline) 밑줄이 있는 글자를 결정
+	-순수하게 꾸미는 용도의 요소로 사용
+	-<a>와 헷갈릴 수 있는 위치에서 사용하지 않도록 주의 (a쓰면 글자 파랑에 밑줄생김)
+	-<span style="text-decoration: underline">을 활용할 수 있을 경우에는 사용을 권장하지 않음
+12. code (inline code) 컴퓨터 코드 범위를 설정 코드가 어디인지 인지시켜주기 위해 사용
+13. kbd (keyboard input) 텍스트 입력 장치에서 사용자 입력을 나타내는 텍스트 범위를 설정
+             -텍스트로 Ctrl이라치면 안되고 <kbd>Ctrl</kbd>이라고 해야 컨트롤인 것 알 수 있다
+14. sup, sub 윗첨자 아랫첨자, 
+                 윗첨자는 x제곱 아랫첨자는 H2O같은 것에 사용
+15. SPAN 텍스트에 적합 DIV는 한줄에 하나씩 쓸수있으면 수직으로 쌓이기 때문
+16. BR 줄바꿈
+ 
+수정
+17. del 삭제된 텍스트의 범위를 지정
+           -cite        변경을 설명하는 리소스의 url
+           -datetime 변경이 일어난 유효한 날짜 문자
+18. ins 새로 추가된 텍스트의 범위를 지정
+     <p>my favorite color is <del>blue</del><ins>red</ins>!</p>
+
+-----------------------------------------------------------------------------------------------------------------
+HTML 멀티미디어  & 내장 콘텐츠 & 스크립트
+
+1. img  이미지 삽입 하는 태그
+	-src (필수)이미지 url
+	-alt  (필수)이미지의 대체텍스트
+	-width 이미지의 가로너비
+	-height 이미지의 세로너비
+반응형일 때 
+	-srcset 브라우저에게 제시할 이미지의 url과 크기의 목록을 정의 (소스 셋)
+ 	         w단위는 이미지의 원본 크기(가로너비)를 의미합니다
+	         400x300 크기 이미지의 w 값은 400w이다
+                      여기에 고정된 이미지 크기를 유지하려면 width 속성을 추가할 수 있습니다.
+	         sizes 속성과는 다른 개념이다
+                     x단위는 이미지의 비율 의도를 의미합니다. 
+                     w단위를 사용하면 x단위 쓸 필요없다. w가 x의 상위호환이다
+반응형일 때 
+	-sizes  미디어 조건과 해당 조건일 때의 최적화 이미지 크기를 정의
+		sizes="(min-width: 1000px) 700px"
+                          가로가 천픽셀 이상일때 700픽셀짜리 이미지로 나오게해주세요
+	-crossorigin 가져오기가 cors를 사용하여 수행되어야하는지의 여부
+	-ismap 서버 측 이미지 맵으로 지정해 클릭하여 좌표를 쿼리스트링으로 서버에
+	          전송할지 여부
+	-usemap 클라이언트 측 이미지 맵으로 지정
+
+2. audio 오디오파일 넣는 태그
+	-autoplay 준비되면 바로 재생
+	-controls 제어 메뉴를 표시
+	-loop 재생이 끝나면 다시 처음부터 재생
+	-preload 페이지가 로드될 때 파일을 로드할자의 지정(힌트제공) -none 로드하지 않음
+							       -metdata 메타데이터만 로드
+							       -auto 전체 파일 로드
+	-src 콘텐츠 url 
+	-muted 음소거 여부
+
+            <audio src="" controls autoplay loop muted></audio>
+3. video 동영상 콘텐츠를 삽입
+            autoplay가 지정된 경우, preload는 무시됨
+            -autoplay 준비되면 바로 재생 
+            -controls 제어 메뉴를 표시
+            -crossorigin 가져오기가 cors를 사용하여 수행되어야하는지 여부
+            -loop 재생이 끝나면 다시 처음부터 재생
+	-muted 음소거 여부
+	-poster 동영상 썸네일 이미지 url
+	-preload 페이지가 로드 될 때 파일을 로드할지의 지정
+                                                                                 -none 로드하지 않음
+						      -metadata 메타데이터만 로드
+						      -auto 전체 파일 로드
+	-src 콘첸츠 url
+	-width 동영상 가로 너비
+	-height 동영상 세로 너비
+        
+4. figure, figcaption 
+             <figure>는 이미지나 삽화, 도표 등의 영역을 설정
+	<figcaption>는 <figure>에 포함되어 이미지나 삽화등의 설명을 표시
+             <img src="./images.png" alt="이미지">
+             <figcaption>이미지입니다!</figcaption>
+5.iframe 다른 html 페이지를 현재 페이지에 삽입 (inline 요소) (유튜브 영상같은거도 가져와서 볼수있음)
+            (중첩된 브라우저 컨텍스트(프레임)를 표시)
+	-name              이름
+	-src                 소스
+	-width             프레임의 가로 너비
+	-height            프레임의 세로 너비
+	-allowfullscreen 전체화면 모드 사용 여부  
+	-frameborder     프레임 테두리 사용     (0,1)로 사용 여부 확인 그다음 값입력
+	-sandbox          보안을 위한 읽기 전용으로 삽입 (보안 문제를 해결하기 위한)
+						-allow-form 양식 제출 가능
+						-allow-script 스크립트 실행 가능
+						-allow-some-origin 같은 출처의 리소스 사용가능
+
+             <div>
+             <iframe src="https://naver.com" frameborder="0" width="70" height="400px"></iframe>
+	</div>
+
+6.canvas cansvas API에나 WebGL API를 사용하여 그래픽이나 애니메이션을 랜더링
+	*API는 기능을 활용할 수 있게 해주는 명령들의 집합
+	-width         캔버스의 가로 너비
+	-height        캔버스의 세로 너비
+    
+             <canvas id="canvas" width="200" height="150"></canvas>
+	<script>
+	        const canvas = document.getElementById('canvas');  /!-- 캔버스를 찾는 것--!/
+	        const ctx = canvas.getContext('2d');                    /!-- 2d그림을 그릴것이다--!/
+	        ctx.fillStyle = 'rgb(200, 0, 0)';                                /!-- 그림 색 --!/
+	        ctx.fillRect(10, 10, 50, 50);			/!-- X값 Y값 가로 세로--!/
+	        ctx.fillStyle = 'rgba(0, 0, 200, 0.5)';
+	        ctx.fillRect(30, 30, 50, 50);
+	</script>
+
+7. script 스크립트 코드를 문서에 포함하거나 참조(외부 스크립트)
+
+	-async 스크립트의 비동기적 실행 여부 (어 싱크)  (* SRC 필수 속성)
+                      *동기적 실행방식은 스크립트가 순차적으로 실행
+                      *비동기적은 내가 설정해놓은 순서대로 실행
+	         *스크립트는 자기가 직접 쓸수도 있고
+	          외부에 있는 자바스크립트를 가져올때는 src를 통해 가져온다
+
+	-crossorigin 별도의 도메인을 사용하는 사이트(cors)의 오류 로깅을  -anonymous
+		    허용하기 위해 사용	        			-use-credentials
+
+	-defer         문서 파싱(구문 분석) 후 작동 여부     (*SRC 필수 속성)
+                              -스크립트는 언제 실행하느냐에 따라
+                               제대로 실행되냐 안되냐가 갈릴 수 있다
+                               defer은 실행 시점을 제어 할 수 있다
+		    -물리적인 위치 상관없이 html 다확인해서 실행해라
+
+	-src	     참조할 외부 스크립트 url
+	-type          MIME 타입                                                        -text/javascript
+
+             const myName = Document.getElementById('my-name');  /*my-name이라는 것을 찾아라*/
+             
+8.noscript 스크립트를 지원하지 않는 경우에 삽입할 html을 정의
+               <noscript> 
+		자바스크립트를 지원하지 않는 환경입니다
+	   </noscript>
+
+9.table 데이터 표의 행과 열을 생성
+	-tr 행(행/줄) {display: table;}  /!--디스플레이 속성이 테이블이다--!/
+	-th 제목 (열)
+		-abbr          열에 대한 간단한 설명
+                        -headers      관련된 하나 이상의 다른 머리글 칸 id 속성 값
+		-colspan       병합하려는 열의 수
+		-rowspan     병합하려는 행의 수
+		-scope         자신이 누구의 '머리글 칸'인지 명시
+				-col: 자신의 열
+				-colgroup: 모든 열
+				-row: 자신의 행
+				-rowgroup: 모든 행
+				-auto
+	-td 데이터
+                        -headers      관련된 하나 이상의 다른 머리글 칸 id 속성 값
+		-colspan       병합하려는 열의 수
+		-rowspan     병합하려는 행의 수
+
+예시
+-html
+	<caption>데이터 표</caption>
+	<table>
+	       <tr>
+		<th colspan="2" id="th-data">데이터</th>
+	       </tr>
+	       <tr>
+		<th abbr="Type" scope="col" headers="th-data">데이터 타입</th>   /!-- 테이블 헤더 th-data에 종속된 헤더임--!/
+		<th abbr="Value" scope="col" headers="th-data">데이터 값</th>    
+	       </tr>
+	       <tr>
+		<td>알파벳</td>
+		<td>A</td>
+	       </tr>
+	       <tr>
+		<td>숫자</td>
+		<td>7</td>
+	       </tr>
+-css
+	table {
+	    border-collapse: collapse;
+	}
+	th {
+	     border: 1px solid red;
+	     padding: 10px;
+	}
+	td {
+	     border: 1px solid red;
+	     padding: 10px;
+	}
+10. caption 표의 제목을 설정
+	   -열리는 table 태그 바로 다음에 작성해야 함
+	   -<table> 당 하나의 <caption>만 사용 가능
+11. colgroup, col 표의 열들을 공통적으로 정의하는 컬럼<col>과 그의 집합<colgroup>
+	   -span 연속되는 열의 수
+
+12. thead, tbody, tfoot 머리글, 본문, 바닥글 지정
+
+
+문서의 양식
+
+13. form 웹 서버에 정보를 제출하기 위한 양식 범위를 정의
+            네이버 로그인 페이지를 생각하자/ 입력된 정보를 특정한 페이지 특정한 주소로 전송한다
+	<form>이 다른<form>을 자식 요소로 포함할 수 없음
+	-action            전송한 정보를 처리할 웹페이지의 url
+	-autocomplete   사용자가 이전에 입력한 값으로 자동 완성 기능을 사용할 것인지 여부   
+                                  on/off
+	-method           서버로 전송할 http
+		          get, post
+	-name              고유한 양식의 이름
+	-novalidate        서버로 전송시 양식 데이터의 유효성을 검사하지 않도록 지정
+            -target             서버로 전송 후 응답받을 방식을 지정
+		          _self,_blank
+
+	<form action="/login">
+		<input type="email" name="email">
+		<input type="password" name="password">
+		<button type="submit">로그인</button>
+	</form>
+                         로그인 버튼을 누르면 /login이라는 페이지로 submit된다
+                         <form action="/login" method="get"> 아이디 비번이 전부 url에 노출되게된다
+		 <form action="/login" method="post"> url에 중요 정보 안보임
+						    그러나 완벽히 가리지 못하기때문에
+						    암호화(보안)를 하게 된다
+
+14. input 사용자에게 입력 받을 데이터 양식
+	-type		입력 받을 데이터의 종류		   
+	-value		양식의 초기 값
+                데이터 type과 values
+                type 속성에 입력할 수 있는 값의 목록
+                example
+                <input type="button"/>
+	    <input type="checkbox"/>
+	    <input type="file"/>
+	    <input type="text"/>
+	    값                 데이터 종류                         특징
+                text               텍스트
+	    button           일반 버튼                           <button>처럼 사용                          
+	    checkbox        체크박스                             동의 하나 안하나
+	    color              색상                                  IE 지원 불가
+	    email              이메일 
+	    file                 파일
+ 	    hidden            보이지 않지만 전송할 양식     value 속성으로 값을 지정
+	    image             이미지 제출 버튼                  <img/>처럼 사용
+	    number           숫자                         
+	    password         비밀                                 가려지는 양식
+	    radio               라디오 버튼                        같은 name 속성 그룹 내 하나만 선택
+                                                                            다른 radio가 있어야 한다
+	    range              범위 컨트롤                        min, max, step, value(기본값)속성 사용
+	    reset               초기화                              해당<form> 범위 내 모든 양식
+	    search              검색
+	    submit             제출 버튼		    해당<form>범위 내 고유한 양식ㅎ
+	
+              <form action="/login" id="login-form">
+	  </form>
+	  <input type="text" form="login-form">
+               폼태그의 id와 인풋태그 안의 폼을 매칭시키면 구동 가능
+
+	-autocomplete    사용자가 이전에 입력한 값으로 자동완성기능을 사용할 것인지  on/off
+	-autofocus        페이지가 로드될 때 자동으로 포커스        / 문서 내 고유해야 함
+	-checked	           양식이 선택되었음을 표시	   	  /type 속성 값이 radio checkbox일 경우
+	-disabled		양식을 비활성화
+	-form		<form>의 id 속성 값		  해당 <form>의 후손이 아닐 경우만
+	-list		참조할 <datalist>의 id 속성 값
+	-max		지정 가능한 최대 값		  type 속성값이 number일 경우만
+							  min 속성보다 큰 값만 허용
+            -min                  지정 가능한 최소 값                          type 속성값이 number일 경우만
+							  min 속성보다 큰 값만 허용
+	-maxlength         입력 가능한 최대 문자 수                    type 속성 값이 text, email, password, tel, url일 경우만
+	-multiple             둘 이상의 값을 입력 할 수 있는지 여부  type 속성 값이 email, file일 경우에만
+						               email일 경우 ,로 구분
+	-name                양식의 이름
+	-placeholder        사용자가 입력할 값의 힌트                  type 속성 값이 text, search, tel, url, email일 경우 
+	-readonly            수정 불가한 읽기 전용
+	-step		유효한 증감 숫자의 간격		   type 속성 값이 number, range일 경우만
+	-src		이미지의 url			   type 속성 값이 image일 경우만
+	-alt		이미지의 대체 텍스트		   type 속성 값이 image일 경우만
+	
+15. label 라벨 기능 요소의 제목
+	for 속성으로 라벨 가능 요소를 참조하거나 콘텐츠로 포함
+	라벨 가능 요소 :<button>,<input>,<progress>,<select>,<textarea>
+	속성                   의미
+	for 		참조할 라벨 가능 요소의 id 속성 값
+	
+            아래 대로 한다면 라벨 클릭시 체크박스 클릭 안됨
+	<input type="checkbox" id="user-agreement"/>
+	<label for="user-agreement">동의하십니까</label>
+
+            아래대로 한다면 라벨 클릭시 체크박스 클릭됨
+	<label><input type="checkbox"/>동의하십니까?</label>
+
+16.textarea 여러 줄의 일반 텍스트 양식
+	-autocomplete 사용자가 이전에 입력한 값으로 자동 완성 기능을 사용할 것인지 여부
+	-autofocus      페이지가 로드될 때 자동을 포커스
+	-disabled        양식을 비활성화
+	-form             <form>의 id속성값
+	-maxlength      입력 가능한 최대 문자 수
+	-name            양식의 이름
+	-readonly	        수정 불가한 읽기 전용
+	-rows             양식의 줄 수            기본값 2줄
+	-placeholder    사용자 입력 값의 힌트
+
+17. fieldset 같은 목적의 양식을 그룹화
+                ex) 커피 주문 사이즈
+                     1.레귤러  2.라지  3.슈퍼
+	-disabled     그룹 내 모든 양식 요소를 비활성화
+	-form	    그룹이 속할 하나 이상의 <form>의 id 속성 값
+	-name        그룹의 이름
+
+     select, datalist, optgroup, option
+18. select  옵션을 선택하는 메뉴
+
+     속성                         의미                              값         기본값
+     autocomplete           자동완성                         on off       on
+     diabled                   비활성화 
+     form                      <form>의 id 속성 값
+     mutiple                   다중 선택 여부
+     name                      선택 메뉴의 이름
+     size                      한 번에 볼 수 있는 행의 개수  숫자
+
+      <select name="fruits" size="3">
+	<option>apple</option>
+	<option>orange</option>
+	<option>banana</option>
+	<option>mango</option>
+ 
+19. datalist 인풋에 데이터리스트 통해서 선택
+ 	<input type="text" list="fruits">
+	<datalist id="fruits">
+		<option>apple</option>
+		<option>orange</option>
+		<option>banana</option>
+		<option>mango</option>
+	</datalist>
+  
+20. progress 작업의 완료 진행률을 표시
+	속성         의미                   값                     특징
+            max        작업의 총량          숫자
+            <progress value="70" max="100">70%</progress>
+            value       작업의 진행량       숫자                 max 속성을 생략할 경우 0~1 사이의 숫자여야 함
+            <progress value="0.7">70%</progress>
+
+-------------------------------------------------------------------------------------------------------------------------------
+전역속성
+
+class  공백으로 구분된 요소의 별칭을 지정 (별명)
+id      문서에서 고유한 식별자를 정의 (이름, 고유함)
+         섹션이라는 클래스는 여러개 만들어도 되지만
+         섹션이라는 id는 하나만 만들 수 있다.
+ css에서 class는 .으로 검색 id는 #으로 검색
+
+
+data-*    사용자 정의 데이터 속성을 지정
+	html에 javascript에서 이용할 수 있는 데이터(정보)를 저장하는 용도로 사용
+	<!--data-custom-data-attributes-->
+	<div id="me" data-my-name="Heropy" data-my-age="851">Heropy</div>
+	// dataset.customDataAttributes
+	const $me = document.getElementById('me)
+
+draggable   요소가 Drag and Drop API를 사용 가능한지 여부를 지정
+	<div draggable="true">The element to drag.</div>
+
+hidden 요소를 숨길 때 사용한다
+	<form id="hidden-form" action="/form-action" hidden>
+	         <input type="text" name="id" value="heropy">
+	</form>
+	<button form="hidden-form" type="submit">전송</button>
+
+tabindex  tab키를 이용해 요소를 순차적으로 포커스 탐색할 순서를 지정
+	 대화형 콘텐츠는 기본적으로 코드 순서대로 탭 순서가 지정됨
+	 비대화형 콘텐츠에 tabindex="0"을 통해 포커스는 가능하지만 탭 순서에서 제외 가능
+	 tabindex="-1"을 통해 포커스는 가능하지만 탭 순서에서 제외 가능
+	 tabindex="1" 이상의 양수 값은 논리적 흐름을 방해하기 때문에 사용을 추천하지 않음
+
+대화형 콘텐츠 
+	대화형 콘텐츠는 사용자와의 상호작용을 위해 특별하게 설계된 요소를 포함. 이 카테고리에는
+	속하는 요소는 다음과 같다. <a>,<button>,<details>,<embed>,<iframe>,<keygen>
+	,<label>,<select>,<textarea>
+
+	특정조건이 충족된 경우에만 이 카테고리에 속하는 몇가지
+	<audio>, controls 속성을 가진 경우
+	<img>, usemap속성을 가진 경우
+	<input> type 속성이 hidden이 아닌 경우
+	<menu> type 속성이 toolbar에 속한 경우
+	<object> usemap 속성을 가진 경우
+	<video> controls 속성을 가진 경우
+
+	<h1 tabindex="0">Sign In</h1>
+	<label>username: <input type="text"></label>
+	<label>password: <input type="text"></label>
+	<label>ps: <input type="text" tabindex="1"></label>
+	<input type="submit" value="sign in">
+
+
+상대경로 ./(생략이 가능) 현재 폴더에서 다른폴더 근처에서 찾는다
+	../ 현재 폴더 밖으로 한번 나갔다가 다른 폴더 근처에서 찾는다
+
+절대경로 http(https)
+	/(//)
+
+html에서 띄어쓰기 여러번해도 한번만 나온다
+여러번 띄어쓰기하고 싶다면 특수기호를 사용해야한다(&nbsp;)
+&nbsp;는 한번의 띄어쓰기이며 여러번 하고싶다면 계속 복붙하면 된다
+
+html <>를 태그 괄호가 아닌 텍스트로 사용하고 싶다면 &lt;(열리는 꺽쇠괄호) &gt;(닫히는 꺽쇠괄호)를
+사용한다
+
+
+
+
+
+

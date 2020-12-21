@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            width: 100%;
+            height: 100%;
+        }
+        #first {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            background-color: gainsboro;
+        }
+        #second {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            background-color: beige;
+            right: 30px;
+            top: 30px;
+        }
+        #third {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            position: absolute;
+            right: 10px;
+            top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="first">
+        <div id="second">
+            <div id="third">
+                Hello
+            </div>
+        </div>
+    </div>
+</body>
+</html>

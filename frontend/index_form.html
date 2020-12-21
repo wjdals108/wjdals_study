@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+</head>
+<body>
+    <form action="/join" method="get">
+        <div>이름: <input type="text" name="name" value="김정민"></div>
+        <div>주소: <input type="text" name="addr"></div>                                         <!-- value 생략하면 default값이 들어가는거다 -->
+        <div>이메일: <input type="email" name="email"></div>
+        <div>색상: <input type="color" name="clr"></div>    
+        <div>나이: <input type="number" name="age"></div>                                         <!-- number를 주면 숫자만 입력가능함 문자 입력안됨 -->
+        <div>생년월일: <input type="date" name="birthday"></div>
+        <div>시간: <input type="time" name="teatime"></div>
+        <div><input type="button" value="걍버튼"></div>
+        <div><button>걍버튼2</button></div>                                                        <!-- 버튼만드는 2번째방법 얘는 기본 속성값이 submit으로 되어있음 보내기 싫으면 type="button" 해주면 됨 -->
+        <div>
+            <label>축구<input type="checkbox" name="hobby" value="1"></label>                   <!-- 얘네는 여러개 선택가능함 서버에서 받을때 String 형태의 배열로 받는다 -->
+            <label>농구<input type="checkbox" name="hobby" value="2"></label>
+            <label>수영<input type="checkbox" name="hobby" value="3" checked></label>           <!-- default 값 주기 -->
+        </div>
+        <div>
+            성별 : 
+            <label>여자<input type="radio" name="gender" value="female"></label>                <!-- radio 타입은 무조건 1개만 선택가능함 다른거 선택하면 그전에꺼 해제됨 name이 gender로 같으므로 그룹화되어있는거임 -->
+            <label>남자<input type="radio" name="gender" value="male" checked></label>          <!-- checked를 주면 기본값이 체크되어서 나오기때문에 무조건 1개의 값을 주게됨 해제가 불가능하니깐 -->
+        </div>
+        <div>
+            지역 :
+            <select name="location">
+                <option value="1">서울</option>
+                <option value="2">대전</option>
+                <option value="3" selected>대구</option>                                        <!-- 처음의 default값을 주고 싶을때 얘는 selected를 주면 된다. -->
+                <option value="4">부산</option>
+            </select>
+        </div>
+        <div>
+            범위 : <input type="range" name="range">
+        </div>
+        <input type="submit" value="전송">
+        <input type="reset" value="리셋">
+    </form>
+</body>
+</html>

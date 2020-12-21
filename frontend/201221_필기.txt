@@ -1,0 +1,205 @@
+https://ofcourse.kr/html-course/%ED%83%9C%EA%B7%B8%EC%9D%98-%EC%86%8D%EC%84%B1
+
+html, css 공부하기에 괜찮은 사이트인듯
+
+
+
+
+
+tag는 속성을 가질 수 있다.
+<td rowspan="3">서울</td>
+-> td 태그는 rowspan 이라는 속성을 가진거다
+
+태그마다 동작하는 속성이 있기때문에
+동작하지않는 속성을 줄 수는있는데 아무런 동작도 하지 않는다.
+
+id="" class="" style=""
+요 3개는 모든 태그에 동작하는 속성을 줄 수 있다.
+<div id="" class="" style=""></div>
+
+id="a" 요건 이름을 주는거라고 볼 수 있다.
+a라는 이름으로 찾아올 수 있다는 말이다.
+똑같은 id="a"라는 이름으로 주면 위에부터 검색하기 때문에 찾아올때 위에꺼를 찾아옴
+
+class="ff"
+class는 반대로 여러애한테 ff라는 이름을 줄 수 있다.
+css가 많이쓴다
+공통적인 css를 먹이고 싶을때 쓴다는말이지
+1개써도 상관없음
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+viewport 는 화면에 뜨는거
+content="width=device=width,
+이 부분은 우리화면에 맞춰서
+initial-scale=1.0"은 반응형, 1.0비율에서 바꾸지않겠다는 뜻 (모바일때문에 있는거임)
+
+index_table.html 파일처럼 css부분을 html에다 넣는거는 좋은 코딩방법이아님
+css는 css파일로 따로, html은 html파일로 따로 둬야한다
+유지보수가 그래야 좋다
+
+페이지 수가 늘어날수록 수정하기가 힘들꺼임
+
+
+
+태그는 별로 없긴하다
+그중에 진짜 많이 쓰는게
+div, span
+나누는거기 때문에 제일 많이 쓸꺼임
+
+태그 속성에 유명한게
+<a href=""></a>
+<img src="">
+<input type="">
+<form action="" method=""></form>
+
+
+<form action="/join" method="post"></form>
+form 태그는 대량의 정보를 서버에 보낼때 form 태그를 쓴다.
+form 태그에서 주로 많이 쓰는 attribute(속성)는
+action, method, 
+action은 목적지라고 보면 된다.(데이터를 가지고 갈)
+mehtod는 html통신에서 보낼때 어떤식으로 보낼지 결정해주는거다. post랑 get이 있다.
+get방식은 쿼리스트링(QueryString)을 만들어서 보내는 방식이라고 보면 된다.
+쿼리스트링은 ?로 시작된다. -> ?뒤에부분은 쿼리스트링이라고 보면 된다.
+= 기준으로 왼쪽이 키값이고 오른쪽이 value 값
+enter, click은 기본적으로 다 get방식이다.
+get방식이 속도가 빠르고 간편하게 할 수 있다.
+get방식은 길이제한이 있다.
+post방식은 많은데이터를 보내야할때나 보안이 필요할때 post 방식을 이용한다.
+파일업로드 같은거 할때는 무조건 post방식
+post방식은 은닉화 즉, 숨겨져서 데이터를 보내준다.
+
+그런데 get방식을 쓰려면 form 태그를 사용 잘 안함
+
+value값에 어떤값을 주면 처음 열었을때만 들어가있는값임
+바꾸면 바껴서 value값이 저장됨
+
+
+input type의 종류가 굉장히 많음
+text, email, color, number, date, time, button, checkbox, radio, submit, reset 등등
+
+html에서 정수란 개념은 없다
+그냥 다 문자임
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+css
+
+css에서 선택자는 크게 3개있다.
+
+tag 선택자
+class 선택자
+id 선택자
+
+
+ <style>
+        div{                               
+            color: red;
+        }
+    </style>
+이렇게 주면 div태그에 전부 style을 넣어준다.
+이게 tag 선택자
+
+        .cls1 {
+            background-color: aqua;
+        }
+        .cls2 {
+            background-color: coral;
+        }
+이런식으로 .클래스명 으로 주는게 class 선택자
+클래스명이 같은거에 전부 style을 넣어준다.
+
+
+
+#div1 {
+            font-weight: bold;
+        }
+id 선택자
+#아이디명 아이디를 골라서 style을 넣어준다.
+
+
+
+
+css에서는 엄청 많은 attribute(속성)이 있다
+이거에 대해서는 공부해서 짜도록 해보자
+
+
+css position
+static, realtive, fixed, 
+
+position 중에
+static과 relative의 큰 차이점은
+left top 이런거를 줄 수 있냐 없냐와	(static이 안됨)
+부모가 될수있냐없냐가 있다.		(static이 안됨)
+
+absolute는 static이 아닌 제일먼저 만나는 부모를 따른다.
+다 static이면 body에서 한다.
+부모를 기준으로두고 움직이는거다.(부모 영역을 벗어날수도있다.)
+relative는 자기 자신을 기준으로 움직임
+
+position은 레이아웃 잡을때 쓴다.
+
+
+#container > div {
+
+        }
+container id의 밑에있는(바로밑) div에 다 줄 수 있음
+
+#container div {
+
+        }
+이렇게 쓰면 container 밑에있는 모든 div한테 줄 수 있음 위의꺼랑 다름
+
+
+
+
+flex-direction: column;
+열 방향	(세로방향)
+flex-direction: row;
+줄 방향	(가로방향)
+
+
+justify-content (정방향)
+
+justify-content: 이거 뒤에 오는거 여러가지 있다. 구분하자
+
+
+align-items (역방향)
+마찬가지 이거도 뒤에 오는거 여러가지있음
+
+flex-direction: column;
+이게 column이냐 row냐에 따라 justify-content랑 justify-content가 어느 방향으로 정렬하는지 바뀐다.
+
+
+https://flexboxfroggy.com/#ko
+이거 공부할때 개구리옮기기로 공부
+
+
+
+flex-grow: 1;
+body를 viewpoint 전부 쓰게 만들었는데
+남는공간이 생기는거 보기 싫을때
+이거를 주면은 남는공간 다 채운다
+비율로 함
+
+flex-grow:1;
+flex:grow:2;
+이런 상황이면 첫번째거가 1/3만큼
+두번째거가 2/3만큼
+
+https://heropy.blog/2018/11/24/css-flexible-box/
+css-flex 공부할만한 사이트

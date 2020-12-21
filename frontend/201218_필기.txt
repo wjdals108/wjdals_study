@@ -1,0 +1,292 @@
+FOREIGN KEY (학과번호) REFERENCES t_major(학과번호)
+
+외부키를 줄때는 REFERENCES 뒷 부분을 구별할 수 있는 유니크한 값(중복되지않은값)이 와야한다.
+
+
+CREATE TABLE t_student2(
+	학생번호 INT UNSIGNED PRIMARY KEY,
+	학생이름  VARCHAR(10) NOT NULL,
+	학과번호 INT UNSIGNED UNIQUE,
+	주소  VARCHAR(10) NOT NULL
+);
+
+CREATE TABLE t_class2(
+	강좌번호 INT UNSIGNED PRIMARY KEY,
+	강좌이름 VARCHAR(10) NOT NULL,
+	강의실 VARCHAR(10) NOT NULL
+);
+
+CREATE TABLE t_major2(
+	학과번호 INT UNSIGNED PRIMARY KEY,
+	학과이름 VARCHAR(10) NOT NULL,
+	FOREIGN KEY (학과번호) REFERENCES t_student2(학과번호)
+);
+
+
+CREATE TABLE t_student_class2(
+	학생번호 INT UNSIGNED,
+	강좌번호 INT UNSIGNED,
+	PRIMARY KEY(학생번호, 강좌번호),
+	FOREIGN KEY (학생번호) REFERENCES t_student2(학생번호),
+	FOREIGN KEY (강좌번호) REFERENCES t_class2(강좌번호)
+);
+#됨
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+데이터사전
+
+
+데이터베이스 트랜잭션 
+알아보자
+
+SELECT @@AUTOCOMMIT;
+SET autocommit=0;
+
+DELETE FROM t_user WHERE i_user = 4;
+
+INSERT INTO t_user
+(i_user, nm, id_number)
+VALUES
+(6, 'F', '66');
+
+SELECT * FROM t_user;
+
+COMMIT;
+ROLLBACK;
+#어차피 자바를 이용해서 이 쿼리문을 날릴꺼기 때문에 자바로 짜면됨
+오토커밋 끄고, 한번에 커밋할 내용들 짜고 완료됬을경우에만 커밋 보내고 이런식으로)
+
+
+
+
+데이터베이스 인덱스
+
+index 걸어주면
+내부적으로 정렬해서 하기때문에 검색할때 빨라짐
+
+
+pk를 주면 unique, not null, index 가 자동으로 걸어진다
+
+
+CREATE INDEX idx_user_nm ON t_user(nm);
+#인덱스 거는거
+#idx_user_nm 은 인덱스에 이름을 준거임(내마음대로)
+
+SHOW INDEX FROM t_user;
+#t_user에 있는 INDEX를 보고싶을때 쓰는거
+
+ALTER TABLE t_user DROP INDEX idx_user_nm;
+#table에 있는 idx_user_nm 인덱스를 지우고 싶을때 쓰는거임
+
+
+
+
+
+
+가상테이블
+
+CREATE VIEW view_user_hobby AS
+SELECT C.i_user
+, C.nm AS user_nm
+, b.nm AS hobby_nm
+FROM t_user_hobby A
+INNER JOIN t_hobby B
+ON A.i_hobby = B.i_hobby
+INNER JOIN t_user C
+ON A.i_user = C.i_user;
+
+
+밑에 SELECT 문이 엄청 기니깐 이거를
+CREATE VIEW view_user_hobby AS 요거를 작성해서
+다음에
+SELECT * FROM view_user_hobby;
+이렇게 써서 간단하게 나타낼 수 있다.
+
+
+
+SHOW FULL TABLES WHERE TABLE_TYPE LIKE 'VIEW';
+#VIEW 만들어놓은거 보고 나타내고 싶을때
+
+
+DROP VIEW view_user_hobby;
+#VIEW 지우고 싶을때
+
+
+
+
+
+
+
+
+CREATE TABLE t_dog(
+	i_dog INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+	nm VARCHAR(20) NOT NULL,
+	gender CHAR(1) NOT NULL,
+	CHECK (gender IN ('남', '여'))
+);
+
+
+AUTO_INCREMENT 해놓으면 값 넣을때 지가 알아서 1씩 증가시킨다.
+CHECK (gender IN ('남', '여')) 이부분은 gender에 '남', '여' 이외의 값이 들어오면 에러를 내준다.
+
+
+
+
+
+
+
+visual studio code
+
+extends 들어가서
+live server 깔려있는지확인
+
+
+html은 브라우저가 쓰는 확장자이다
+
+html 은 bark어 (표시어) 표시만 하는거다
+
+html 5 선택
+! + enter 하면 됨
+
+
+
+몸으로 따지면
+html은 뼈
+css는 살을 붙이고 화장
+java scrpit는 프로그래밍 언어임 브라우저 안에서 돌아가는 (동적인거를 만들어줄수있다)
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+//html5 버전이라는거를 알려줌 *필수
+
+<html lang="ko">
+//html이 시작되었다
+
+</html>
+//html이 끝났다.
+
+위의 2개는 딱히 없어도 됨
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+//head 부분
+//화면에 나타나지 않는 부분을 세팅해주는 부분이라고 생각하면 된다.
+<title>Document</title>
+//요거는 탭, 타이틀 부분
+
+
+화면에 나오는 부분은 body부분
+<body>
+    
+</body>
+
+
+
+
+
+
+
+
+태그
+
+<div>블록태그 (Block Tag)</div>
+<div>는 내 부모의 전체 가로값을 다 차지한다.
+<span>인라인태그 (Inline Tag)</span>
+지가 필요한만큼
+
+    <div>A</div>
+    <div>B</div>
+    <div>C</div>
+    <hr>
+    <span>A</span>
+    <span>B</span>
+    <span>C</span>
+
+집에서 해봐라
+
+
+
+웹사이트에서 F12번 = 개발자모드
+
+
+https://www.w3schools.com/
+//공부할수있는곳
+
+https://flatuicolors.com/
+//색깔
+
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>테이블</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>이름</th>
+                <th>나이</th>
+                <th>주소</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td>A</td>
+                    <td>20</td>
+                    <td>대구</td>
+                </tr>
+                <tr>
+                    <td>B</td>
+                    <td>30</td>
+                    <td>서울</td>
+                </tr>
+                <tr>
+                    <td>C</td>
+                    <td>40</td>
+                    <td>서울</td>
+                </tr>
+        </tbody>
+    </table>
+</body>
+</html>

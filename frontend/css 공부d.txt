@@ -1,0 +1,164 @@
+
+css 속성
+1. width 가로너비 
+2. height 세로너비
+3. text-align = 텍스트 수평정렬
+   text-align: left
+   text-align: light
+   text-align: center
+   text-align: justify 양쪽 정렬
+4. text-decoration = 텍스트 장식을 지정하는 방식
+   text-decoration: none 없음
+   text-decoration: underline 밑줄
+   text-decoration: overline 윗줄
+   text-decoration: line-through 중간취소줄 지정
+   text-decoration: blink 텍스트 깜빡임
+5. text-indent = 텍스트 들여 쓰기 지정하는 속성
+   text-indent: length: 텍스트를 길이만큼 들여씀
+6. font-size = 폰트 크기 지정 단위는 px
+7. font-family = 폰트 이름, 산세리프, 세리프 서체 지정
+8. font-style = 폰트의 모양을 지정
+   font-style: nomat 일반적 모양
+   font-style: italic 폰트 기울임
+9. font-weight = 폰트 굵기 지정
+   font-weight: bold
+   font-weight: 100
+     단축 속성으로 마진
+10. margin = 요소의 바깥 여백
+     개별 속성으로 마진
+     margin-top
+     margin-right
+     margin-bottom
+     mrgin-left
+11. padding = 요소의 내부 여백
+12. color  컬러는 '글자의 색'만 변경할 수 있다.
+              요소의 색을 바꾸려면 배경을 바꾸어야 한다
+    *font-color, text-color같은 것은 없다
+     background-color 배경바꾸기로 요소의 색을 바꿀 수 있다.
+     그냥 background로는 색상 위치
+13.float
+
+<OL> 태그 목록 CSS
+list-style-type
+
+<UL> 태그 목록 CSS
+list-style-type
+
+패딩이나 마진을 어느요소 (헤더, 컨테이너 등)에 넣어야 최적의 효율을 뽑을지
+항상 생각하면서 작업해야 css에 익숙해질 수 있다. 계속 시각적으로 확인 해봐야한다
+
+@import css에서 외부 css를 가져오는것
+@import url("./common2.css");
+
+-------------------------------------------------------------------------------------
+가상 클래스 선택자 콜론하나만 붙음 :가상클래스
+
+e:hover 마우스 위에 올리고 있을때 변화
+e:active 마우스 클릭했을때의 변화 
+e:focus  e가 포커스 된 동안에만 e 선택 (대화형 콘텐츠에서만 사용 가능)
+				   input, img, tabindex 등
+e:first-child e가 형제 요소 중 첫번째 요소라면 선택
+e:last-child e가 형제 요소 중 마지막 요소라면 선택
+e:nth-child(n) e가 형제 요소 중 n번째 요소라면 선택 끝에 n을 바꾸면 된다
+.fruits li:first-child {
+     color: red;
+}
+
+<ul class="fruits">
+     <li>딸기</li>   <!--선택-->
+     <li>사과</li>
+     <li>오렌지</li>
+     <li>망고</li>
+</ul>
+
+.fruits li:nth-child(2n) {     <!--짝수번호 선택-->
+     color: red;
+}
+
+<ul class="fruits">
+     <li>딸기</li>   
+     <li>사과</li>   <!--선택-->
+     <li>오렌지</li>
+     <li>망고</li>   <!--선택-->
+</ul>
+
+.fruits li:nth-child(n+3) {     <!--3번째 요소부터 이후 요소들 선택-->
+     color: red;
+}
+
+<ul class="fruits">
+     <li>딸기</li>   
+     <li>사과</li>   <!--선택-->
+     <li>오렌지</li>
+     <li>망고</li>   <!--선택-->
+</ul>
+
+.fruits p:nth-child(1) {    <!--.fruits의 첫번째 자식 요소가 <p></p>가 
+     color: red;                   아니기 때문에 선택되지 않는다--> 
+}
+
+<ul class="fruits">  <!--선택된 요소 없음-->
+     <div>딸기</div>   
+     <p>사과</p>   
+     <p>오렌지</p>
+     <span>망고</span> 
+</ul>
+
+.box-group div:first-child {     <!--박스 그룹과DIV사이의 띄어쓰기는
+	color: red;                   후손을 의미하기 때문에 후손DIV다 포함-->
+	font-weight: bold;
+}
+
+<div class="box group"></div>   
+   <div>1</div>            <!--선택-->
+   <div>2</div>
+   <div>3</div>
+       <div>3-1</div>     <!--선택-->
+       <div>3-2</div> 
+
+
+.box-group > div:first-child {     <!--그렇기에 자식선택자를 쓰면된다
+	color: red;                      띄어쓰기 중요하다 잊지마라-->
+	font-weight: bold;
+}
+
+<div class="box group"></div>   
+   <div>1</div>            <!--선택-->
+   <div>2</div>
+   <div>3</div>
+       <div>3-1</div>     
+       <div>3-2</div> 
+
+e:nth-of-type(n) e의 타입(태그이름)과 동일한 타입인 형제요소 중 e가 n번째
+	         요소라면 선택
+
+.fruits {
+  font-size: 40px;
+}
+.fruits p:nth-of-type(1) {
+  color: red;
+}
+
+<div class="fruits">
+  <div>딸기</div>
+  <p>사과</p>          <!--선택-->
+  <p>망고</p>
+  <span>오렌지</span>
+</div>
+
+e:not(s) s가 아닌 e선택
+
+-----------------------------------------------------------------------------------
+가상 요소 선택자 ::before ::after 콜론 두개 붙음 
+
+e::before e요소 내부의 앞에, 내용을 삽입
+e::after    e요소 내부의 뒤에, 내용을 삽입
+
+팁 :  ul>li 쓰고 tab 누르면 알아서 html만들어짐
+       li{숫자$}*20은 1씩늘어나는 <li>숫자n</li>가 20개 만들어짐
+ul li::before {
+   content: "숫자";      <!--콘텐트가 매우 중요하다, 내용없더라도 쓴다-->
+   font-weight: bold';
+   color: red;
+   margin-right: 20px;
+}
