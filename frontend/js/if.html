@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function chk_1() {
+            return 1;
+        }
+
+        if(chk_1()) {                               //0이 아닌 숫자는 true
+            console.log('값이 찍히나요?');
+        }
+
+        function chk_2() {
+            return 'aaaa';
+        }
+
+        if(chk_2()) {                               //true 비어있지 않은 문자열은 true
+            console.log('chk_2()');
+        }
+        if('') {                                    //false '' 아무것도 없는 문자열은 false
+            console.log('안찍힐껄');
+        }
+
+        if(undefined) {                             //false
+            console.log('!!!!!!!!!!');
+        }
+
+        if(null) {                                  //false
+            console.log('??????');
+        }
+
+        var obj = {};
+        if(obj) {                                   //true 객체의 안이 비어있어도 주소값이 존재하기때문에 true
+            console.log('obj!!!!!');
+        }
+
+        var arr = [];
+        if(arr) {                                   //true 마찬가지 배열도 주소값이 존재하기때문에 안이 비어있어도 true
+            console.log('arr!!!!');
+        }
+
+    </script>
+</body>
+</html>

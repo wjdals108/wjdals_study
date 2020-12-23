@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function sum() {
+            var sum = 0;
+            for(var i=0; i<arguments.length; i++){
+                sum += arguments[i];
+            }
+            console.log('sum : ' + sum);
+        }
+
+        function mul() {
+            var mul = 1;
+            for(var i=0; i<arguments.length; i++){
+                mul *= arguments[i];
+            }
+            console.log('mul : ' + mul);
+        }
+        
+        mul(4, 7);
+        sum(1, 2);
+        var result = sum(1, 2, 3, 'aaa', false);
+        console.log(result);                                //undefined가 찍힘 why? sum 함수에서 return값이 없으니깐
+
+    </script>
+</body>
+</html>

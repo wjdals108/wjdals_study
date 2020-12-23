@@ -1,0 +1,270 @@
+자바스크립트는 import를 주로 head부분이아니라 body에서 많이함
+why? 일단 화면부터 빨리 읽어줘야하니깐
+
+body밑에 있는것들을 거의 DOM(Documnet Object Model)이라 부름
+
+자바스크립트는 DOM을 건드는게 많다
+보통 body부분에 제일 밑에 함
+
+자바스크립트는 java 같은 프로그래밍 언어이다.
+
+자바스크립트랑 java는 차이가 있다.
+둘다 문법 따로 알아야한다.
+
+자바스크립트는 자바랑 달리 main 메소드를 만들 필요없다.
+body부분에 <script> </script> 태그 안에서 해주면 된다.
+
+변수선언
+	var n1 = 1;
+	var str = '문자열';
+	var f1 = 10.2;
+	var bool = true;
+
+	n2 = 10; 			//var없이 쓰는 요것도 가능하긴 한데 엥간하면 쓰지마라 개발자들 대부분 안쓴다.
+
+document.write(n1);
+document.write('<br>');
+        document.write(str);
+        document.write('<br>');
+        document.write(f1);
+        document.write('<br>');
+        document.write(bool);
+        document.write('<br>');
+화면에 띄어준다. 잘 안쓴다.
+
+
+alert(n1);
+        alert(str);
+        alert(f1);
+        alert(bool);
+요거는 알림창이 뜬다.
+
+
+console.log(n1);
+        console.log(str);
+        console.log(f1);
+        console.log(bool);
+화면에 안뜨고 F12 눌렀을때 콘솔창에 나온다. 개발자만 쓰겠지
+
+
+var var1 = 10;
+        var var2 = 20;
+        console.log(var1 + var2);
+콘솔창에 30이 찍힌다
+
+var var1 = 10;
+        var var2 = 20;
+        var var3 = '40';
+        console.log(var1 + var2 + var3);
+콘솔창에 3040 이렇게 찍힌다.
+
+
+var var1 = 10;
+        var var2 = 20;
+        console.log(var1 + var2);
+        
+        var var3 = '40';
+        var result = var1 + var2 + var3;
+        console.log(result);
+
+        var result2 = parseInt(result) + 50;		//parseInt를 만나서 숫자로 바껴서 3040 + 50 = 3090이 됨
+        console.log(result2);
+콘솔창에 3090이 찍힌다.
+
+
+console.log(n1 + n2);   //105 출력 // + 때는 문자열있으면 문자열 합치기해서 찍힘
+        console.log(n1 * n2);   //50        // +제외하고 나머지 연산자는 일단 숫자로 바꿔보고 함(알아서 parse해준다는 얘기임)
+        console.log(n1 - n2);   //5         // 둘다 문자열이라도 숫자로 바꿔서 한다.
+        console.log(n1 / n2);   //2
+        console.log(n1 % '3');  //1
+
+        console.log('10' * '3a');   //NaN   // 숫자로 바꿀수 없는 애면은 Not a Number 라고 출력함 숫자가 아니라는 뜻이지    //+였으면 103a 라고 찍힐거임
+
+
+
+
+
+var n1 = 3;
+        var n2 = '3';
+
+        console.log(n1 == n2);          //true 뜸           //안에있는 값만 비교하기때문에 parse하면서 true가 뜨는거임
+        console.log(n1 === n2);         //false 뜸          //===은 타입까지 같이 비교하기때문에 false 가 뜨는거임
+        console.log(n1 != n2);
+        console.log(n1 !== n2);
+
+
+
+
+
+function sum(n1, n2) {                  //자바스크립트에서 함수안에 파라미터를 선언할때는 var 안적고 변수이름만 적어줘야함
+            return n1 + n2;                     //자바스크립트에서 구현부에 return이 있으면 비void return이 없으면 void 리턴타입이라 생각하면된다.
+        }
+
+        var result = sum(10,20);                //함수 호출하는법
+        console.log('result : ' + result);
+
+        function printSum(n1, n2) {
+            //console.log('result : ' + n1 + n2);   //이러면은 출력했을때 result : 1020 요래 찍힐꺼다
+            console.log('result : ' + (n1 + n2));
+        }
+        var result2 = printSum(10, 20);             // 값을 준게 아니니깐
+        console.log('reuslt2 : ' + result2);        //resul2 : undifined 라고 출력될꺼임
+
+        var n1;
+        console.log('n1: ' + n1);                   //얘도 undifined가 출력될꺼임       //undifined랑 null의 차이 궁금하면 찾아보던가
+        
+        
+
+
+
+
+
+자바에서
+sum(1,2);
+		sum(1,2,3);
+		sum(1,2,3,4);
+		sum(1,2,3,4,5,6,7,8,9,10);
+오버로딩 없이 이거 해주고 싶을때
+가변인자
+
+public static void sum(int ...num) {
+		int sum = 0;
+		for(int i=0; i<num.length; i++) {
+			sum += num[i];
+		}
+		System.out.println("sum : " + sum);
+	}
+
+만약에
+public static void sum(int n1, int n2){
+System.out.println("sumsum : " + (n1+n2));
+}
+이 메소드가 있다면
+메인메소드에 sum(1,2)는 이 메소드를 실행한다.
+왜냐하면 더 정확한거를 따른다.
+
+
+
+
+
+
+
+function sum(n1, n2) {
+            console.log(n1 + n2);
+        }
+
+        sum(1, 2, 3);
+        sum(1, 2, 3, 4);
+
+에러 안뜨고
+콘솔창에
+3
+3
+요래 찍힌다
+뒤에꺼를 버린다고 생각하면됨
+자바스크립트는 에러 잘 안뜸
+
+
+
+function sum(n1, n2, n3, n4) {
+            console.log(n1 + n2 + n3 + n4);
+        }
+
+        sum(1, 2, 3);
+        sum(1, 2, 3, 4);
+
+이러면
+sum(1,2,3) 얘는 NaN이 뜬다
+n4가 undefined기 때문에 숫자 + undefined면 undefined가 뜬다는 얘기다
+
+
+
+
+function sum(n1, n2, n3, n4=0) {
+            console.log(n1 + n2 + n3 + n4);
+        }
+
+        sum(1, 2, 3);
+        sum(1, 2, 3, 4);
+이러면
+안들어왔을때 n4를 0으로 초기화해줬기때문에
+NaN이 안뜨고 제대로 된 값이 뜬다.
+
+
+초기화를 null로 주면 0으로 인식한다.
+
+
+
+
+
+
+
+function sum() {
+            var sum = 0;
+            for(var i=0; i<arguments.length; i++){
+                sum += arguments[i];
+            }
+            console.log('sum : ' + sum);
+        }
+
+        sum(1, 2);
+        sum(1, 2, 3);
+java의 가변인자
+자바 스크립트에서는 arguments가 자동으로 가변인자라 생각하면 됨
+... 이런거 해줄필요없이 arguments 하면 여기에 그냥 들어감
+타입도 필요없이 문자열 넣으면 문자열이 들어감
+
+
+
+
+
+
+
+
+function chk_1() {
+            return 1;
+        }
+
+        if(chk_1()) {
+            console.log('값이 찍히나요?');
+        }
+
+자바스크립트에서 0이 아닌 수는 전부 true로 본다
+
+function chk_2() {
+            return 'aaaa';
+        }
+
+        if(chk_2()) {
+            console.log('chk_2()');
+        }
+문자열도 어떤문자든 true 로 본다.
+''요렇게 문자를 하나도 안주면 false로 본다.
+
+
+if(undefined) {
+            console.log('!!!!!!!!!!');
+        }
+
+        if(null) {
+            console.log('??????');
+        }
+
+undefined, null 둘다 false다
+
+
+
+var obj = {};
+        if(obj) {
+            console.log('obj!!!!!');
+        }
+객체는 주소값을 확인하는거이기때문에 객체 안에 비어있더라도 주소값이 존재하니깐
+true로 나온다.
+
+
+var arr = [];
+        if(arr) {
+            console.log('arr!!!!');
+        }
+배열도 마찬가지 안에 비어있어도 주소값이 있으니깐 true
+

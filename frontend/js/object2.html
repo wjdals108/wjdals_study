@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var obj = {                                             //이거를 리터럴 방식으로 객체를 만든다고 하는거임 이렇게 만들꺼임
+            name: '홍길동',
+            age: 12,
+            showMe: function() {
+                console.log('My name is ' + this.name + ', age is ' + this.age);
+            }
+        };
+
+        console.log(obj.name + ', ' + obj.age);
+        obj.showMe();
+
+        obj.name = 'ddd';
+        obj.showMe();
+
+        //1급객체
+        //JSON 검색해봐라 클라이언트와 서버가 통신할때 값들을 JSON으로 보낸다는거는 그 값들을 문자열로 만들어서 보내주는거다
+        //{}는 객체 []는 배열
+        //name: '홍길동' 에서 name이 key, '홍길동'이 value
+        //JSON에서는 key 값과 value값에 ""를 붙여주는거라고 보면된다.
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var n1 = 10;
+        var n2 = '5';
+
+        console.log(n1 + n2);   //105 출력 // + 때는 문자열있으면 문자열 합치기해서 찍힘
+        console.log(n1 * n2);   //50        // +제외하고 나머지 연산자는 일단 숫자로 바꿔보고 함(알아서 parse해준다는 얘기임)
+        console.log(n1 - n2);   //5         // 둘다 문자열이라도 숫자로 바꿔서 한다.
+        console.log(n1 / n2);   //2
+        console.log(n1 % '3');  //1
+
+        console.log('10' * '3a');   //NaN   // 숫자로 바꿀수 없는 애면은 Not a Number 라고 출력함 숫자가 아니라는 뜻이지    //+였으면 103a 라고 찍힐거임
+        
+    </script>
+</body>
+</html>

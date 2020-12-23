@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Human(name, age) {                                     //생성자
+            this.name = name;
+            this.age = age;
+
+            this.showMe = function() {
+                console.log('My name is ' + this.name + ', age is ' + this.age);
+            }
+        }
+
+        Human.prototype.hello = function() {                            //이렇게 Human 바깥에서 추가해서 만드는게 가능하다. 이게 속도면에서 유리함, 위에 showMe()는 Human을 만들때마다 만들어주는데 바깥에서 prototype으로 추가시키면 참조시키는거라 속도면에서 유리
+            console.log('나는 ' + this.name + '이야, 반가워~!');
+        }
+
+        var h1 = new Human('홍길동', 12);
+        var h2 = new Human('가나다', 14);
+        //이거는 생성자를 이용해서 만드는 객체방식
+        //근데 이렇게 안할꺼임
+        //리터럴 방식으로 할꺼임
+
+
+        h1.hello();
+
+        var h3= h1;
+        h3.name = '우주선';
+
+        console.log(h1.name);
+        console.log(h2.name);
+        h1.showMe();
+        h2.showMe();
+        h3.showMe();
+
+        
+
+    </script>
+</body>
+</html>

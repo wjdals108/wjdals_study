@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function ck_1() {
+            console.log('--ck_1() called --');
+            return 1;
+        }
+        function ck_2() {
+            console.log('--ck_2() called --');
+            return '';
+        }
+        function ck_3() {
+            console.log('--ck_3() called --');
+        }
+        if(ck_1() || ck_2() || ck_3()) {                    //ck_1()이 true니깐 앞에서 true가 뜨면 뒤에꺼 안물어봄 그래서 ck_1만 호출함
+
+        }
+        if(ck_1() && ck_2() && ck_3()) {                    //&&는 false 만날때까지 계속하니깐 ck_2()에서 false를 만나므로 ck_2()까지 호출
+
+        }
+    </script>
+</body>
+</html>
