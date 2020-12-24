@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = [2, 6, 10, 11, 22, 1, 7]
+        for(var i=0; i<arr.length; i++){
+            console.log(arr[i]);
+        }
+
+        console.log('------------------');
+
+        var sum = 0;
+        arr.forEach(function(item) {                    //forEach문 안에서 반복을 하면서 계속 console.log(item)을 실행한다. 위의반복문에 비해서 간단함
+            console.log(item);
+            sum += item;
+        });
+        console.log(sum);
+
+    </script>
+</body>
+</html>

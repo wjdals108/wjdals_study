@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function calc(cb, n1, n2) {
+            return cb(n1, n2);
+        }
+
+        var result = calc(function(num1, num2) {                //calc 안에서 이름없는 함수를 만들어준거 보통 이렇게 많이쓴다 cb.html에 fnSum 함수를 이름없는 함수로 만들어준거다
+            return num1 + num2;
+        }, 10, 20);
+
+        console.log('result : ' + result);
+
+    </script>
+</body>
+</html>
