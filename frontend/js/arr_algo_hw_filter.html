@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var myArr = {
+            arr: [2, 6, 10, 11, 22, 1, 7],
+            filter: function(cb){
+                var returnArr = new Array();
+                for(var i=0; i<this.arr.length; i++){
+                    if(cb(this.arr[i])==undefined){
+                        continue;
+                    }
+                    returnArr.push(cb(this.arr[i]));
+                }
+                return returnArr;
+            }  
+        };
+
+        /*
+        var arr2 = myArr.arr.filter(function (item){
+            return item % 2 == 0;
+        })
+        console.log(arr2);
+        */
+        
+        var filterArr = myArr.filter(function (item){
+            if(item % 2 == 0){
+                return item;
+            }
+        });
+        console.log(filterArr);
+
+    </script>
+</body>
+</html>

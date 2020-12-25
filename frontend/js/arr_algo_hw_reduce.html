@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var myArr = {
+            arr: [2, 6, 10, 11, 22, 1, 7],
+            reduce: function(cb,init){
+                var result = init;
+                for(var i=0; i<this.arr.length; i++){
+                    result = cb(result, this.arr[i]);
+                }
+                return result;
+            }
+        };
+
+        /*
+        var sum = myArr.arr.reduce(function (pre, val){
+            return pre+val;
+        }, 10);
+        console.log(sum);
+        */
+
+        var result = myArr.reduce(function (pre, val){
+            return pre + val;
+        }, 10);
+        console.log(result);
+
+    </script>
+</body>
+</html>
