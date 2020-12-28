@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function printA() {
+            setTimeout(function(){                          //setTimeout은 내장함수
+                console.log('--printA called');
+            }, 3000);                                       //3000이라 적으면 3초후에 밀리세컨드임
+        };
+        function printB() {
+            setTimeout(function(){
+                console.log('--printB called');
+            }, 2000);
+        };
+        function printC() {
+            setTimeout(function(){
+                console.log('--printC called');
+            }, 1000);
+        };
+        printA();                                       //자바였다면 A가 호출되는거를 기다렸다가 다음으로 넘어갈텐데
+        printB();                                       //자바스크립트는 비동기이기 때문에 C가 먼저 실행되고 A가 가장 마지막으로 호출된다.
+        printC();
+
+    </script>
+</body>
+</html>

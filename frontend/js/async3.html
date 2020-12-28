@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var pro = new Promise(function(resolve, reject){
+
+            setTimeout(function(){
+                resolve({'val':'ddd', 'val2':2})
+            }, 3000);
+
+        });
+
+        pro.then(function(data){
+            console.log('data : ' + data.val);
+            console.log('data2 : ' + data.val2);
+        });
+
+    </script>
+</body>
+</html>

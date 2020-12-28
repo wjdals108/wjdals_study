@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function printA() {                                                     //콜백지옥
+            setTimeout(function(){
+                console.log('--printA called');
+
+                setTimeout(function(){
+                    console.log('--printB called');
+                    
+                    setTimeout(function(){
+                        console.log('--printC called');
+                    }, 1000);
+
+                }, 2000);
+
+            }, 3000);
+        };
+        printA();
+
+    </script>
+</body>
+</html>
