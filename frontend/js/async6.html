@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function printA() {
+            return new Promise(function(resolve){
+                setTimeout(function(){
+                    resolve(450);
+                }, 3000);    
+            });
+            
+        };
+        //2초후에 val * 2를 리턴하는 함수
+        function printB(val) {
+            return new Promise(function(resolve){
+                setTimeout(function(){
+                    resolve(val * 2);
+                }, 2000);
+            });
+        };
+
+        function printC(val) {
+            return new Promise(function(resolve){
+                setTimeout(function(){
+                    resolve(val + 100);
+                }, 1000);
+            });
+        };
+
+        async function proc(){                          //await는 async 함수에서만 쓸 수 있다. == async 지우면 에러뜬다는 얘기다 Promise 아니면 딱히 await쓸 일 없다.
+            var itemA = await printA();                 //await는 값을 받을때까지 기다려준다. 사실 일할 때 웬만하면 복잡한 구조 나올일 없기때문에 then으로 해결가능한게 대부분이다.
+            console.log('itemA : ' + itemA);
+
+            var itemB = await printB(itemA);
+            console.log('itemB : ' + itemB);
+
+            var itemC = await printC(itemB);
+            console.log('itemC : ' + itemC);
+        }
+
+        proc();
+
+    </script>
+</body>
+</html>
