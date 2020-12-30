@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" class="cls1">
+    <input type="text" class="cls1">
+    <input type="text" class="cls1">
+    <input type="text" class="cls1">
+    
+    <button onclick="chkTxt()">체크</button>
+    <script>
+        
+        function chkTxt(){
+            var clsArr = document.querySelectorAll('.cls1');
+            clsArr.forEach(function(item, idx){
+                console.log(`clsArr[${idx}].value : ${item.value}`);
+            })
+            for(var i=0; i<clsArr.length; i++){
+                console.log(`clsArr[${i}].value : ${clsArr[i].value}`);
+            }
+        }
+    </script>
+</body>
+</html>

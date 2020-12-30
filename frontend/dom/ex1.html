@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <input type="number" id="num1">
+        <input type="number" id="num2">
+        <input type="number" id="result" readonly>
+        <button id="btn" >더하기</button>
+
+        <button onclick="ddd()">호출</button>
+    </div>
+    <script>
+        var num1 = document.querySelector('#num1');
+        var num2 = document.querySelector('#num2');
+        var result = document.querySelector('#result');
+
+        btn.onclick = sumFn;
+
+        function ddd() {
+            var num11 = sumFn();
+            console.log(num11);
+        }
+        
+
+        function sumFn(){
+            var a = sum(num1.value, num2.value);
+            result.value = a;
+            return a;
+        }
+
+        function sum(n1, n2){
+            return Number(n1)+Number(n2);
+        }
+
+    </script>
+</body>
+</html>

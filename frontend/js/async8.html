@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function calc(n1, n2) {
+            var p = new Promise(function(resolve, reject){
+                var result = n1 / n2;
+                if(result == Infinity) {    //문제발생
+                    reject('문제 발생');
+                } else {                    //문제가 안 생김
+                    resolve(result);
+                }
+            });
+            return p;
+        };
+
+        calc(10,2).then(function(result){
+            console.log('result1 : ' + result);
+        }).catch(function(result){                                      //catch는 reject가 실행되어야만 실행되는 부분 그러므로 여기서 catch는 아무 일도 하지 않음
+            console.log('catch_result1 : ' + result);
+        }).then(function(){                                             //java에서 fianlly 같은거라 생각하면 됨 무조건 실행함
+            console.log('1 마지막 than 호출')
+        });
+
+        calc(10,0).then(function(result){
+            console.log('result2 : ' + result);
+        }).catch(function(result){                                      //여기는 reject가 실행되니깐 위의 꺼랑 반대
+            console.log('catch_result2 : ' + result);
+        }).then(function(){
+            console.log('2 마지막 than 호출')
+        });
+
+    </script>
+</body>
+</html>

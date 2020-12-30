@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="tx1" type="text">                            <!-- DOM에서 id는 1개여야한다.-->
+    
+    <button onclick="chkTxt()">체크</button>
+    <script>
+        
+        function chkTxt(){
+            //console.log(tx1.value);                         //id는 1개여야하기때문에 이렇게 바로 접근해줄 수 있다.
+            //var eleTx1 = document.getElementById('tx1');      
+            var eleTx1 = document.querySelector('#tx1');        //엥간하면 이거 쓰자
+            
+            //var eleTx1 = $('#tx1');                          //제이쿼리 방식으로하면 $('#tx1') 이렇게 간단하게 해줄수 있음 근데 제이쿼리보다 자바스크립트를 하자
+            console.log(eleTx1.value);
+        }
+
+
+    </script>
+</body>
+</html>

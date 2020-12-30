@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="tx1" type="text">
+    <button id="btn">체크</button>
+    <script>
+        var ele = tx1;
+        var btn = document.querySelector('#btn');
+        btn.addEventListener('click', ddd);                
+        btn.addEventListener('click', secFn);
+        btn.onclick = threeFn;
+        //btn.onclick = null;     //.onclick = 이벤트       이렇게 넣어준 이벤트 지우고 싶을때
+
+        //btn.removeEventListener('click', ddd);       //addEventListner로 추가한 이벤트 지우고 싶을때
+        //btn.removeEventListener('click', secFn);
+
+        function ddd(e){                                    //chkTxt에 파라미터를 주고 싶다면 이렇게 함수 하나 만들어서 주고 지우고 하면 됨
+            chkTxt(e, 10101010);
+        }
+
+        function chkTxt(e, val){
+            console.log(ele.value + ', ' + e.target.id + ', ' + val);
+        }
+
+        function secFn(e){
+            console.log('hahaha');
+        }
+
+        function threeFn(e){
+            console.log('threeFn');
+        }
+    </script>
+</body>
+</html>

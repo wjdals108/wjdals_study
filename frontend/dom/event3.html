@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">체크</button>
+    <script>
+        var btn = document.querySelector('#btn');
+        btn.onclick = function(){
+            fn1();
+            fn2();
+        }
+
+        function fn1() {
+            console.log('fn1() called');
+        }
+
+        function fn2() {
+            console.log('fn2() called');
+        }
+
+    </script>
+</body>
+</html>

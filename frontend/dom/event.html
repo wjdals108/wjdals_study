@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="tx1" type="text">
+    <button id="btn">체크</button>
+    <script>
+        var ele = tx1;
+        var btn = document.querySelector('#btn');
+        btn.onclick = chkTxt;                               //자바스크립트에서 이벤트를 거는방법
+        //위의 거랑 밑의 16~18라인이랑 같은말이다
+        //btn.onclick = function(){
+        //    chkTxt();
+        //};
+        //14번째줄로 이벤트를 주면 파라미터를 보내줄수가 없다.
+
+        function chkTxt(){
+            console.log(ele.value);
+        }
+
+
+    </script>
+</body>
+</html>

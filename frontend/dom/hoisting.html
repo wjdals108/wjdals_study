@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function fn1(){
+            return privateCalc(10, 20);             //return을 만났지만 함수 정의하는부분이 제일위로 올라가기때문에(그 블록안에서) privateCalc 함수를 호출 할 수 있다.
+            
+            function privateCalc(n1, n2){           //f1안에서만 할수있는 함수
+                return n1 + n2;
+            }
+        }
+
+        console.log(fn1());
+
+        function fn2(){
+            if(1){
+                var a = 10;                         //자바는 변수선언이 {}단위이기때문에 이게 안될꺼지만 자바스크립트는 함수단위이기 때문에 가능하다.
+            }
+            console.log(a);
+        }
+        fn2();
+    </script>
+</body>
+</html>
