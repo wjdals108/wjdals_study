@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, td{
+            border-collapse: collapse;
+            border: 1px solid rgb(58, 59, 58);
+        }
+        td{
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <script>
+        var cont = document.querySelector('#container');
+
+        var inputColor = document.createElement('input');
+        inputColor.type = 'color';
+        inputColor.value = '#000000';
+        cont.append(inputColor);
+
+        var table = document.createElement('table');
+        var count = 0;
+
+        for(var i=0; i<20; i++){
+            var tr = document.createElement('tr');
+            table.append(tr);
+            for(var j=0; j<20; j++){
+                var td = document.createElement('td');
+                td.onclick = function(e) {
+                    td.innerText = count;
+                    count++;
+                }
+                
+                tr.append(td);
+            }
+        }
+        
+        cont.append(table);
+
+    </script>
+</body>
+</html>

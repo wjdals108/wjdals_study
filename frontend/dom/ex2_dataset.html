@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, td{
+            border-collapse: collapse;
+            border: 1px solid rgb(58, 59, 58);
+        }
+        td{
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <script>
+        var cont = document.querySelector('#container');
+
+        var inputColor = document.createElement('input');
+        inputColor.type = 'color';
+        inputColor.value = '#000000';
+        cont.append(inputColor);
+
+        var table = document.createElement('table');
+
+        for(var i=0; i<20; i++){
+            var tr = document.createElement('tr');
+            table.append(tr);
+            for(var j=0; j<20; j++){
+                var td = document.createElement('td');
+                td.dataset.row = i;
+                td.dataset.column = j;
+                // td.innerText = `${td.dataset.row}, ${td.dataset.column}`;
+
+                td.onclick = function(e) {
+                    e.target.style.backgroundColor = inputColor.value;
+                }
+                
+                tr.append(td);
+            }
+        }
+        
+        
+        cont.append(table);
+
+        const cell = document.querySelector('td[data-row="7"][data-column="10"]')
+        console.log(cell);
+        cell.innerText = 'a';
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, td{
+            border-collapse: collapse;
+            border: 1px solid rgb(58, 59, 58);
+        }
+        td{
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <script>
+        var cont = document.querySelector('#container');
+
+        var inputColor = document.createElement('input');
+        inputColor.type = 'color';
+        inputColor.value = '#000000';
+
+        var btnClear = document.createElement('input');
+        btnClear.setAttribute('type', 'button');
+        //btnClear.setAttribute('value', 'Clear');              //밑에줄이랑 똑같은 의미임
+        btnClear.value = 'Clear';
+        
+        btnClear.onclick = clear;
+
+        function clear(){
+            var alltd = document.querySelectorAll('td');
+            alltd.forEach(function(item){
+                item.style.backgroundColor = '';
+            })
+        }
+
+        cont.append(inputColor);
+        cont.append(btnClear);
+
+        var table = document.createElement('table');
+
+        for(var i=0; i<20; i++){
+            var tr = document.createElement('tr');
+            table.append(tr);
+            for(var j=0; j<20; j++){
+                var td = document.createElement('td');
+                td.onclick = function(e) {
+                    if(e.target.style.backgroundColor){                         //if(e.target.style.backgroundColor == inputColor.value){                                 //e.target.style.backgroundColor 이거는 rgb(0,0,0) 이렇게 나오고 inputColor.value 이거는 16진수 '#000000' 으로 나오기 때문에 false로 나옴,     그리고 inputColr의 값을 바꿔주면 안바뀌기 때문에 이렇게 하면 안됨
+                        e.target.style.backgroundColor = '';
+                    }
+                    else{
+                        e.target.style.backgroundColor = inputColor.value;
+                    }
+                    //e.target.style.backgroundColor = e.target.style.backgroundColor ? '' : inputColor.value;    //3항식으로 간단하게 만들어줄수있음
+                }
+                td.ondblclick = function(e){
+                    e.target.style.backgroundColor = '';
+                }
+                
+                tr.append(td);
+            }
+        }
+        
+        cont.append(table);
+
+    </script>
+</body>
+</html>

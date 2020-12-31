@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function fn(){
+            var i =0;
+            return {
+                upCnt: function(){
+                    i++;
+                },
+                printCnt: function(){
+                    console.log(i);
+                }
+            };
+        }
+        var fn1 = fn();
+        var fn2 = fn();
+
+        fn1.upCnt();                    //원래는 i값이 fn()함수가 끝나면 죽었어야하는데 안죽고 계속 살아서 나오는거          요거보고 클로져라고 함
+        fn1.upCnt();
+        fn1.printCnt();
+
+    </script>
+</body>
+</html>
