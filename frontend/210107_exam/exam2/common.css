@@ -1,0 +1,92 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body, .main{
+    width: 100%;
+    height: 100%;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+}
+
+.main header{
+    flex-grow: 1;
+    flex-basis: 0;
+    background-color: green;
+}
+
+.main section{
+    flex-grow: 8;
+    flex-basis: 0;
+    display: flex;
+}
+
+.main-section-div1{
+    flex-grow: 3;
+    flex-basis: 0;
+    background-color: blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-section-div2{
+    flex-grow: 7;
+    flex-basis: 0;
+    background-color: yellow;
+    display: flex;
+}
+
+.main footer{
+    flex-grow: 1;
+    flex-basis: 0;
+    background-color: green;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+ul {
+    list-style: none;
+}
+
+/* menu1 페이지에 css 추가 */
+
+.menu1-page{
+    flex-grow: 8;
+    flex-basis: 0;
+}
+
+.menu1-page-assistant{
+    flex-grow: 2;
+    flex-basis: 0;
+    background-color: orange;
+    display: flex;
+    flex-direction: column;
+}
+
+/* menu2 페이지에 css 추가 */
+
+.menu2-page-ass1{
+    flex-grow: 1;
+    flex-basis: 0;
+}
+
+.menu2-page-ass2{
+    flex-grow: 1;
+    flex-basis: 0;
+    background-color: purple;
+}
+
+#main-a {
+    color: black;
+    text-decoration: underline;
+}
