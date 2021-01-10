@@ -1,9 +1,5 @@
-트랜잭션
-인덱스
-check
-알아서1씩증가
+dynamic 웹 프로젝트 만들기
 
+서버추가(프로젝트도 추가해주기)
 
-visual studio code
-https://www.w3schools.com/
-!+enter
+서버 포트번호 확인, path /로 변경
