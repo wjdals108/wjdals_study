@@ -9,7 +9,6 @@ public class CardMain {
 		Card[] objArr = new Card[shapeArr.length * valueArr.length];
 		
 		int objNum = 0;
-		
 		for(int i=0; i<shapeArr.length; i++) {
 			for(int j=0; j<valueArr.length; j++) {
 				objArr[objNum] = new Card(shapeArr[i], valueArr[j]);

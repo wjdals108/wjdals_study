@@ -1,9 +1,0 @@
-package com.koreait.first.card;
-
-public class CardMain {
-
-	public static void main(String[] args) {
-		private Card[] objArr = new Card[52];
-	}
-
-}

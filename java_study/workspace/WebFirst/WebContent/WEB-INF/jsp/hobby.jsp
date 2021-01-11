@@ -16,17 +16,41 @@
 </head>
 <body>
 	<h1>hobby</h1>
+	<div>
+		<form id="frm" action="/hobby" method="post" onsubmit="return hobbyChk();">						<!-- get은 화면띄우기 담당 pos는 데이터 처리 라고 생각하자 -->
+			<label>i_hobby : <input type="text" name="i_hobby"></label>
+			<label>취미 : <input type="text" name="hobby"></label>	<!-- name이 key, 적히는 값이 value  -->
+			<button type="submit">등록</button>
+		</form>
+		
+		
+		<!--  
+		<form action="/hobby" method="post">
+			<label>삭제하고 싶은 i_hobby를 입력하세요 : <input type="text" name="i_hobby"></label>
+			<button type="submit">등록</button>
+		</form>
+		-->
+		
+	</div>
 	<table>
 		<tr>
 			<th>id<th>
 			<th>취미명<th>
+			<th></th>
 		</tr>
 	<% for(HobbyEntity vo : list) {	%>
 		<tr>
 			<td><%=vo.getI_hobby() %><td>
 			<td><%=vo.getNm() %><td>
+			<td>
+				<button onclick="chkDel(<%=vo.getI_hobby() %>)">삭제</button>
+				<a href="/modHobby?i_hobby=<%=vo.getI_hobby() %>"><button>수정</button></a>
+			</td>
+			
 		</tr>
 	<% } %>
 	</table>
+	
+	<script src="./js/common.js"></script>
 </body>
 </html>

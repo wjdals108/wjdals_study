@@ -1,8 +1,0 @@
-package com.koreait.first.abst;
-
-public class AbstA {
-	public void print() {
-		System.out.println("Hi I'm A");
-	}
-
-}

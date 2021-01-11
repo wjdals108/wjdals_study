@@ -1,9 +1,0 @@
-package com.koreait.first.starcraft;
-
-public class AttackUnit extends Unit{
-
-	public AttackUnit(int max_hp, int hp) {
-		super(max_hp, hp);
-	}
-	
-}

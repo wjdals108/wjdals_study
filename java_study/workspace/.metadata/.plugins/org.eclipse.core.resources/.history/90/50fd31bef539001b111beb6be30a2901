@@ -1,8 +1,0 @@
-package com.koreait.first.starcraft;
-
-public class Firebat extends AttackUnit{
-	public Firebat() {
-		super(30, 7);
-	}
-	
-}

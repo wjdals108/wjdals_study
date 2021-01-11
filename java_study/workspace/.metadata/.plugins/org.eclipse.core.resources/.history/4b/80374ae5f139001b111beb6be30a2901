@@ -1,9 +1,0 @@
-package com.koreait.first.starcraft;
-
-public class Marine extends AttackUnit {
-	final int hp = 20;
-	public Marine() {
-		super(hp, hp, attackPoint);
-	}
-	
-}

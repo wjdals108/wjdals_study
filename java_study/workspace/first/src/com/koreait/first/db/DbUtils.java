@@ -8,7 +8,6 @@ public class DbUtils {
 	public static Connection getCon() {
 		Connection con = null;
 		
-		
 		final String URL = "jdbc:mysql://localhost:3306/test";		//3306은 포트번호, test는 DB이름
 		final String USER = "root";
 		final String PW = "koreait2020";
@@ -16,11 +15,11 @@ public class DbUtils {
 		try {
 			//Class.forName("com.mysql.cj.jdbc.Driver");				//없어도 연결가능하다.
 			con = DriverManager.getConnection(URL, USER, PW);
+			System.out.println("접속 완료!");
 		}
 		catch(Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println("접속 완료!");
 		return con;
 	}
 	
@@ -33,4 +32,5 @@ public class DbUtils {
 			}
 		}
 	}
+	
 }

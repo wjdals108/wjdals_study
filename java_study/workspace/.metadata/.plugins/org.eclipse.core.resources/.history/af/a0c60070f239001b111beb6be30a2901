@@ -1,9 +1,0 @@
-package com.koreait.first.starcraft;
-
-public class StarCraftTest {
-
-	public static void main(String[] args) {
-		Marine m1 = new Marine();
-	}
-
-}

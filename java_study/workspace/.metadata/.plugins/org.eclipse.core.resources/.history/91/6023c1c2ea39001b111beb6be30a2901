@@ -1,7 +1,0 @@
-package com.koreait.first.inter;
-
-public interface InterGrand {
-	int a = 1;
-	
-	void print();
-}

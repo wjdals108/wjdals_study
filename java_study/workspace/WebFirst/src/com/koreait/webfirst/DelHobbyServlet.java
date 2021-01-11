@@ -1,29 +1,33 @@
 package com.koreait.webfirst;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/test1")
-public class TestServlet extends HttpServlet {
+@WebServlet("/DelHobby")
+public class DelHobbyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath()).append("hehe").append("<h1>호호하하</h1>");//안씀
-		request.getRequestDispatcher("/WEB-INF/jsp/test1.jsp").forward(request, response);
+		int i_hobby = Integer.parseInt(request.getParameter("i_hobby"));
 		
+		System.out.println("i_hobby : " + i_hobby);
+		
+		HobbyEntity param = new HobbyEntity();
+		param.setI_hobby(i_hobby);
+		
+		//TODO : 삭제처리
+		int result = DAO.delHobby(param);
+		
+		response.sendRedirect("/hobby");
 	}
 
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		System.out.print("ddd");
-		doGet(request, response);
+		
 	}
 
 }

@@ -1,9 +1,0 @@
-package com.koreait.first.abst;
-
-public class AbstractTeest {
-
-	public static void main(String[] args) {
-		
-	}
-
-}

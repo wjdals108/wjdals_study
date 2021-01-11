@@ -1,8 +1,0 @@
-package com.koreait.first.vending;
-
-public class Can {
-	private String name;
-	private int price;
-	
-	
-}
