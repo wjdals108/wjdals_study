@@ -7,6 +7,34 @@ import java.util.List;
 //DAO는 static을 써도 안써도 상관없음 안쓰면 싱글톤하는게 좋음
 public class DAO {
 	
+	public static HobbyEntity selHobby(HobbyEntity param){						//얘는 SELECT 중에 1줄만 가져오려고 리턴타입이 LIST가 아니라 HobbyEntity임
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = "SELECT nm FROM t_hobby WHERE i_hobby = ?";		//WHERE절에 pk값이 들어갔으면 0줄 아니면 1줄
+		
+		try {
+			con = DbUtils.getCon();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, param.getI_hobby());
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				String nm = rs.getString("nm");
+
+				HobbyEntity vo = new HobbyEntity();
+				//vo.setI_hobby(param.getI_hobby());				//안받아도 상관없음 어차피 ModHobby.jsp에서 param.i_hobby를 사용하고있으니깐
+				vo.setNm(nm);
+				return vo;
+			}
+		} catch(Exception e) {
+			
+		} finally {
+			DbUtils.close(con, ps, rs);
+		}
+		return null;
+	}
+	
 	public static List<HobbyEntity> selHobbyList(){									//이름 sel은 select의미 Hobby는 테이블이름 의미 List는 여러줄 나올때
 		List<HobbyEntity> list = new ArrayList();					//HobbyEntity 객체를 여러개 저장하기 위해 List를 쓰는거다	 	이 객체에는 Hobby테이블의 data값들이 저장되어 있겠찌
 		
@@ -52,14 +80,12 @@ public class DAO {
 		//String sql = "INSERT INTO t_hobby (i_hobby, nm) VALUES (" + param.getI_hobby() + ", '" + param.getNm() + "')";	//예전에 Statement ps 일때는 이렇게 썼다.
 		String sql = "INSERT INTO t_hobby"
 				+ "(i_hobby, nm)"
-				+ " VALUES "
-				+ "(?, ?)";
+				+ " SELECT IFNULL(MAX(i_hobby), 0) + 1, ? FROM t_hobby ";
 		
 		try {
 			con = DbUtils.getCon();
 			ps = con.prepareStatement(sql);				//prepareStatement는 쿼리문과 같이, 얘는 쿼리문을 실행해주는거임, 근데 위에서 쿼리문에서 물음표를 썼으니깐
-			ps.setInt(1, param.getI_hobby());			//요렇게 물음표를 다 정해줘야한다. 1은 물음표의 순서, param.getI_hobby()는 들어갈꺼
-			ps.setString(2, param.getNm());
+			ps.setString(1, param.getNm());				//요렇게 물음표를 다 정해줘야한다. 1은 물음표의 순서, param.getI_hobby()는 들어갈꺼
 			
 			System.out.println(ps);
 			return ps.executeUpdate();
@@ -81,7 +107,6 @@ public class DAO {
 				+ "WHERE "
 				+ "i_hobby = "
 				+ "?";
-		
 		try {
 			con = DbUtils.getCon();
 			ps = con.prepareStatement(sql);

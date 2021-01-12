@@ -4,10 +4,10 @@
 <%
 	//내장객체 set, get Attribute가 있는 친구가 4개!
 	//pageContext, request, session, application
-	pageContext.setAttribute("name", "순일이");		//우선순위가 제일 높다		//jsp 파일이 열리는순간 살아있음.
+	pageContext.setAttribute("name", "순일이");		//우선순위가 제일 높다		//jsp 파일이 열리는순간 살아있음. jsp파일을 사용하면 만들어짐
 	request.setAttribute("name", "홍길동");			//우선순위 2			//얘는 요청을 보낼때마다 살아있음. 응답하면 죽음. 1회성이라 생각하면 됨
 	session.setAttribute("name", "도흠이");			//우선순위 3			//얘는 브라우저를 켜는순간 살고 브라우저를 끌때까지 계속 가지고 있음 로그인 생각하면 됨 브라우저 켜져있는동안은 계속 로그인되있다.
-	application.setAttribute("name", "유정이");		//우선순위 4			//얘는 서버 죽을때 죽음. 거의 안쓴다
+	application.setAttribute("name", "유정이");		//우선순위 4			//얘는 서버 죽을때 죽음. 거의 안쓴다. 1개만 만들어짐. 공용
 	//pageContext, request, session은 개인용 
 	//application은 공용
 	//서버가 기동되면 application은 객체가 딱 1개만 만들어짐

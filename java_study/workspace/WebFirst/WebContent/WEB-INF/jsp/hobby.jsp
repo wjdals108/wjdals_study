@@ -18,7 +18,6 @@
 	<h1>hobby</h1>
 	<div>
 		<form id="frm" action="/hobby" method="post" onsubmit="return hobbyChk();">						<!-- get은 화면띄우기 담당 pos는 데이터 처리 라고 생각하자 -->
-			<label>i_hobby : <input type="text" name="i_hobby"></label>
 			<label>취미 : <input type="text" name="hobby"></label>	<!-- name이 key, 적히는 값이 value  -->
 			<button type="submit">등록</button>
 		</form>

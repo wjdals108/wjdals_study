@@ -30,17 +30,10 @@ public class HobbyServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//request.setCharacterEncoding("UTF-8");
 		
-		String strI_hobby = request.getParameter("i_hobby");
 		String hobby = request.getParameter("hobby");			//html에서 넘어온거는 getParameter다. getAttribute는 html에서 바로넘어왔을때 절대 쓸수없다. 그럼 언제쓰냐? setAttribute 했을때만 getAttribute를 쓸 수 있다. 나머지는 다 getParameter라고 생각하자.
-		
-		int i_hobby = Integer.parseInt(strI_hobby);
-		System.out.println("i_hobby : " + strI_hobby);
-		System.out.println("hobby : " + hobby);
-		
 		
 		//TODO: 등록처리
 		HobbyEntity param = new HobbyEntity();
-		param.setI_hobby(i_hobby);
 		param.setNm(hobby);
 		
 		int result = DAO.insHobby(param);

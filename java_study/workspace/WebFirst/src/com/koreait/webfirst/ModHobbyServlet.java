@@ -18,6 +18,11 @@ public class ModHobbyServlet extends HttpServlet {
 		int i_hobby = Integer.parseInt(request.getParameter("i_hobby"));
 		System.out.println("i_hobby : " + i_hobby);
 		
+		HobbyEntity param = new HobbyEntity();
+		param.setI_hobby(i_hobby);
+		HobbyEntity data = DAO.selHobby(param);
+		request.setAttribute("data", data);
+		
 		String jsp = "/WEB-INF/jsp/modHobby.jsp";
 		request.getRequestDispatcher(jsp).forward(request, response);
 		
@@ -39,7 +44,7 @@ public class ModHobbyServlet extends HttpServlet {
 		HobbyEntity param = new HobbyEntity();
 		param.setI_hobby(i_hobby);
 		param.setNm(nm);
-		int result = DAO.updHobby(param);
+		DAO.updHobby(param);
 		
 		response.sendRedirect("/hobby");
 	}
