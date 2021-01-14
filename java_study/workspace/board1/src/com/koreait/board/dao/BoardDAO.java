@@ -45,7 +45,7 @@ public class BoardDAO {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, param.getI_board());
 			rs = ps.executeQuery();
-			while(rs.next()) {
+			if(rs.next()) {
 				String title = rs.getString("title");
 				String ctnt = rs.getString("ctnt");
 				String r_dt = rs.getString("r_dt");
@@ -95,6 +95,36 @@ public class BoardDAO {
 		}
 		
 		return list;
+	}
+	
+	public static void updBoard(BoardEntity vo) {
+		Connection con = null;
+		PreparedStatement ps = null;
+		
+		String sql = "UPDATE "
+				+ "t_board "
+				+ "SET "
+				+ "title = "
+				+ "?, "
+				+ "ctnt = "
+				+ "?"
+				+ "WHERE "
+				+ "i_board = "
+				+ "?";
+		
+		try {
+			con = DbUtils.getCon();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, vo.getTitle());
+			ps.setString(2, vo.getCtnt());
+			ps.setInt(3, vo.getI_board());
+			int result = ps.executeUpdate();
+			System.out.println(result);
+		} catch(Exception e) {
+			
+		} finally {
+			DbUtils.close(con, ps);
+		}
 	}
 	
 	public static void delBoard(BoardEntity vo) {

@@ -25,10 +25,9 @@ public class BoardDetailServlet extends HttpServlet {
 		param.setI_board(i_board);
 		
 		BoardEntity vo = BoardDAO.selBoard(param);
-		request.setAttribute("vo", vo);
 		
 		//int i_board = Integer.parseInt(request.getParameter("i_board"));
-		System.out.println("i_board : " + i_board);
+		request.setAttribute("vo", vo);
 		
 		String jsp = "/WEB-INF/jsp/detail.jsp";
 		request.getRequestDispatcher(jsp).forward(request, response);				//setAttribute는 무조건 이거 전에 해줘야한다.

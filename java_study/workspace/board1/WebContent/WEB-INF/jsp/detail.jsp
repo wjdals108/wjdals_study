@@ -11,23 +11,15 @@
 	<div>
 		<a href="/list">리스트로 돌아가기</a>
 		<a href="/del?i_board=${param.i_board}"><button>삭제</button></a>
-		<a href=""><button>수정</button></a>
+		<a href="/update?i_board=${param.i_board}"><button>수정</button></a>
 	</div>
 	<div>
-		<table>
-			<tr>
-				<th>번호</th>
-				<th>제목</th>
-				<th>글 내용</th>
-				<th>날짜</th>
-			</tr>
-			<tr>
-				<td>${param.i_board}</td>
-				<td>${vo.title}</td>
-				<td>${vo.ctnt}</td>
-				<td>${vo.r_dt}</td>
-			</tr>
-		</table>
+		<div>번호 : ${param.i_board}</div>
+		<div>제목 : ${vo.title}</div>
+		<div>날짜 : ${vo.r_dt}</div>
+		<hr>
+		<div>글 내용 : ${vo.ctnt}</div>
+
 	</div>
 </body>
 </html>
