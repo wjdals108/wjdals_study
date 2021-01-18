@@ -7,6 +7,8 @@
 <title>글쓰기</title>
 </head>
 <body>
+	<div class="container">
+	<div class="div-form">
 	<form action="/write" method="post">
 		<div><input type="text" name="title" placeholder="제목"></div>
 		<div><textarea name="ctnt" placeholder="내용"></textarea></div>
@@ -15,5 +17,7 @@
 			<input type="reset" value="다시 작성">
 		</div>
 	</form>
+	</div>
+	</div>
 </body>
 </html>

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.koreait.board.dao.BoardDAO;
+import com.koreait.board.model.BoardDTO;
 import com.koreait.board.model.BoardEntity;
 
 
@@ -25,9 +26,13 @@ public class BoardDetailServlet extends HttpServlet {
 		param.setI_board(i_board);
 		
 		BoardEntity vo = BoardDAO.selBoard(param);
-		
-		//int i_board = Integer.parseInt(request.getParameter("i_board"));
 		request.setAttribute("vo", vo);
+		
+
+		String strPage = request.getParameter("page");
+		int page = strPage == null ? 1 : Integer.parseInt(strPage);
+		
+		request.setAttribute("page", page);
 		
 		String jsp = "/WEB-INF/jsp/detail.jsp";
 		request.getRequestDispatcher(jsp).forward(request, response);				//setAttribute는 무조건 이거 전에 해줘야한다.

@@ -43,6 +43,6 @@ public class BoardUpdateServlet extends HttpServlet {
 		param.setCtnt(ctnt);
 		BoardDAO.updBoard(param);
 		
-		response.sendRedirect("/list");
+		response.sendRedirect("/detail?i_board=" + strI_board);
 	}
 }
