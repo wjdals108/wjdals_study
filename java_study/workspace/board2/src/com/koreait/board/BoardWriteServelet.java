@@ -9,30 +9,29 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.koreait.board.dao.BoardDAO;
-import com.koreait.board.model.BoardDTO;
+import com.koreait.board.model.BoardEntity;
 
-
-@WebServlet("/list")
-public class BoardListServlet extends HttpServlet {
+@WebServlet("/write")
+public class BoardWriteServelet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-      
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String strPage = request.getParameter("page");
-		int page = strPage == null ? 1 : Integer.parseInt(strPage); 
-		
-		int rowCnt = 8;							//한 페이지에 나타날 레코드 수 (글 수)
-		BoardDTO param = new BoardDTO();
-		param.setStartIdx(rowCnt * (page - 1));
-		param.setRowCountPerPage(rowCnt);
-		request.setAttribute("pageLength", BoardDAO.selPageLength(param));
-		request.setAttribute("list", BoardDAO.selBoardList(param));
-		
-		String jsp = "/WEB-INF/jsp/list.jsp";
+		String jsp = "/WEB-INF/jsp/write.jsp";
 		request.getRequestDispatcher(jsp).forward(request, response);
 	}
-	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String title = request.getParameter("title");
+		String ctnt = request.getParameter("ctnt");
+		
+		BoardEntity vo = new BoardEntity();
+		vo.setTitle(title);
+		vo.setCtnt(ctnt);
+		
+		BoardDAO.insBoard(vo);
+		
+		response.sendRedirect("/list");
 	}
+
 }

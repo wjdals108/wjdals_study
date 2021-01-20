@@ -1,0 +1,59 @@
+
+* {
+	box-sizing: border;	
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.table-container{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	position: relative;
+}
+
+.write {
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+}
+
+table{
+	border-collapse: collapse;
+	width: 100%;
+}
+
+table, tr{
+	border: 1px solid black;
+}
+
+tbody>tr {
+	cursor: pointer;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.pagingContainer {
+	text-align: center;
+}
+
+.pagingContainer span {
+	color: #27ae60;
+}
+
+.selectedPage {
+	color: red !important;
+	font-weight: bold;
+}

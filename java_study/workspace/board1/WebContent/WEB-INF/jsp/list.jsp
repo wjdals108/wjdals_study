@@ -4,69 +4,23 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.koreait.board.model.BoardEntity" %>
     
-<% List<BoardEntity> list = (List)request.getAttribute("list"); %>
-<% int pageLength = (Integer)request.getAttribute("pageLength"); %>
+<%
+	List<BoardEntity> list = (List)request.getAttribute("list");
+	int pageLength = (Integer)request.getAttribute("pageLength");
+	
+	String strPage = request.getParameter("page");
+	if(strPage == null) {
+		strPage = "1";
+	}
+	int p = Integer.parseInt(strPage);
+	
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>리스트</title>
-<style>
-	* {
-		box-sizing: border;	
-	}
-	
-	body {
-		margin: 0;
-		padding: 0;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
-	
-	.table-container{
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		width: 100%;
-		position: relative;
-	}
-	
-	.write {
-		width: 100%;
-		display: flex;
-		justify-content: flex-end;
-	}
-
-	table{
-		border-collapse: collapse;
-		width: 100%;
-	}
-	
-	table, tr{
-		border: 1px solid black;
-	}
-	
-	tbody>tr {
-		cursor: pointer;
-	}
-	
-	ul {
-		width: 100%;
-		margin: 0;
-		padding: 0;
-		list-style: none;
-		display: flex;
-		justify-content: center;
-	}
-	
-	li {
-		margin: 20px;
-	}
-	
-</style>
+<link rel="stylesheet" href="/css/common.css">
 </head>
 <body>
 	<div class="write">
@@ -94,11 +48,11 @@
 			</tbody>
 		</table>
 		<div class="pagingContainer">
-			<ul>
-			<% for(int i=0; i<pageLength; i++) { %>
-				<li><a href="/list?page=<%=i+1%>"><%=i+1%></a></li>
+			<% for(int i=1; i<=pageLength; i++) { %>
+				<span class="page <%=p == i ? "selectedPage" : ""%>">
+					<a href="/list?page=<%=i%>"><%=i%></a>
+				</span>
 			<% } %>
-			</ul>
 		</div>
 	</div>
 </body>
