@@ -90,6 +90,28 @@ public class BoardDAO {
 		return list;
 	}
 	
+	public static void updBoard(BoardEntity param) {
+		Connection con = null;
+		PreparedStatement ps = null;
+		
+		String sql = "UPDATE t_board SET title = ?, ctnt = ? WHERE i_board = ?";
+		
+		try {
+			con = DbUtils.getCon();
+			ps = con.prepareStatement(sql);
+			ps.setNString(1, param.getTitle());
+			ps.setNString(2, param.getCtnt());
+			ps.setInt(3, param.getI_board());
+			int result = ps.executeUpdate();
+			System.out.println(result);
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			DbUtils.close(con, ps);
+		}
+	}
+	
 	public static void delBoard(BoardEntity param) {
 		Connection con = null;
 		PreparedStatement ps = null;

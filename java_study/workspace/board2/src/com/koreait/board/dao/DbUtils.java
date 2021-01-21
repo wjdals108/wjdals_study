@@ -6,7 +6,7 @@ public class DbUtils {
 	public static Connection getCon() throws Exception {
 		final String URL = "jdbc:mysql://localhost/javaboard1?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8";
 		final String USER = "root";
-		final String PW = "koreait2020";
+		final String PW = "1234";
 		
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection(URL, USER, PW);

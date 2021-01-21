@@ -31,7 +31,18 @@ public class BoardUpdateServelet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String strI_board = request.getParameter("i_board");
+		int i_board = Integer.parseInt(strI_board);
+		String title = request.getParameter("title");
+		String ctnt = request.getParameter("ctnt");
 		
+		BoardEntity vo = new BoardEntity();
+		vo.setI_board(i_board);
+		vo.setTitle(title);
+		vo.setCtnt(ctnt);
+		
+		BoardDAO.updBoard(vo);
+		response.sendRedirect("/detail?i_board=" + strI_board);
 	}
 
 }
