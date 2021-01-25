@@ -17,7 +17,8 @@ public class BoardDeatilServelet extends HttpServlet {
        
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		int page = Utils.getParameterInt(request, "page", 1);
+		
 		String strI_board = request.getParameter("i_board");
 		int i_board = Integer.parseInt(strI_board);
 		

@@ -31,6 +31,8 @@ public class BoardUpdateServelet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int page = Utils.getParameterInt(request, "page", 1);
+		
 		String strI_board = request.getParameter("i_board");
 		int i_board = Integer.parseInt(strI_board);
 		String title = request.getParameter("title");
@@ -42,7 +44,7 @@ public class BoardUpdateServelet extends HttpServlet {
 		vo.setCtnt(ctnt);
 		
 		BoardDAO.updBoard(vo);
-		response.sendRedirect("/detail?i_board=" + strI_board);
+		response.sendRedirect("/detail?i_board="+strI_board+"&page="+page);
 	}
 
 }

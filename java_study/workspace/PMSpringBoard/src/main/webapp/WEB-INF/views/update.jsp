@@ -8,7 +8,6 @@
 </head>
 <body>
 	<form action="/update" method="post">
-		<input type="hidden" name="page" value="${param.page}">
 		<input type="hidden" name="i_board" value="${param.i_board}">
 		<div><input type="text" name="title" value="${vo.title}"></div>
 		<div><textarea name="ctnt">${vo.ctnt}</textarea></div>
