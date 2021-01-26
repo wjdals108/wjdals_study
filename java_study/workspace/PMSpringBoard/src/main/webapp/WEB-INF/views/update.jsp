@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>${vo.title}</title>
 </head>
 <body>
 	<form action="/update" method="post">

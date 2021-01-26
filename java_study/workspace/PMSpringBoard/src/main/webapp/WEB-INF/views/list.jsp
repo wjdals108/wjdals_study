@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>list</title>
+<link rel="stylesheet" href="res/css/common.css">
+<script defer src="/res/js/common.js"></script>
 </head>
 <body>
 	<h1>list</h1>
@@ -18,13 +20,15 @@
 			<th>제목</th>
 			<th>날짜</th>
 		</tr>
+		<tbody>
 		<c:forEach items="${list}" var="item">
-		<tr>
+		<tr onclick="moveToDeTAIL(${item.i_board});">
 			<td>${item.i_board}</td>
-			<td><a href="/detail?i_board=${item.i_board}">${item.title}</a></td>
+			<td>${item.title}</td>
 			<td>${item.r_dt}</td>
 		</tr>
 		</c:forEach>
+		</tbody>
 	</table>
 </body>
 </html>

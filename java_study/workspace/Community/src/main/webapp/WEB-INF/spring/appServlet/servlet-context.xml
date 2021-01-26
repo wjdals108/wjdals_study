@@ -8,26 +8,27 @@
 		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
-
-	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
-	<!-- Enables the Spring MVC @Controller programming model -->
-	<annotation-driven />			<!-- 얘는 반드시 있어야한다. 절대 지우지마라는 얘기다 -->
+	<annotation-driven />
 
-	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
-	<resources mapping="/res/**" location="/resources/" />		<!-- resources에 들어오는 애들은 바꿔준다는 얘기 이거 안하면 value="/"인 애가 다 잡아버려서 css나 js 못 받아옴. 그래서 resources에 css파일이랑 js파일 넣자 -->
+	<resources mapping="/resources/**" location="/resources/" />
 
-	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
+		<beans:property name="order" value="2" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.koreait.sboard" />
+	<beans:bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
+		<beans:property name="order" value="1" />
+	</beans:bean>
+	
+	<context:component-scan base-package="com.koreait.community" />
 	
 	<beans:bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<beans:property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
-		<beans:property name="jdbcUrl" value="jdbc:mysql://localhost/javaboard1"/>
+		<beans:property name="jdbcUrl" value="jdbc:mysql://localhost/javaboard2"/>
 		<beans:property name="username" value="root"/>
 		<beans:property name="password" value="koreait2020"/>
 	</beans:bean>
@@ -38,7 +39,24 @@
 	
 	<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
   		<beans:property name="dataSource" ref="dataSource"/>
-  		<beans:property name="typeAliasesPackage" value="com.koreait.sboard"/>
+  		<beans:property name="typeAliasesPackage" value="com.koreait.community"/>
 	</beans:bean>
-	<mybatis-spring:scan base-package="com.koreait.sboard"/>
-	</beans:beans>
+	<mybatis-spring:scan base-package="com.koreait.community"/>
+	
+	
+	<!--  Tiles 설정 -->
+	<beans:bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<beans:property name="definitions">
+			<beans:list>
+				<beans:value>/WEB-INF/tiles/tiles.xml</beans:value>
+			</beans:list>		
+		</beans:property>
+		<beans:property name="preparerFactoryClass"
+			value="org.springframework.web.servlet.view.tiles3.SpringBeanPreparerFactory"/>
+	</beans:bean>
+	
+	
+	
+	
+	
+</beans:beans>
