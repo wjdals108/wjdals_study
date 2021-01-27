@@ -7,6 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<script src="/res/js/<tiles:getAsString name="privateJs"/>.js"></script>
+
 </head>
 <body>
 	<div id="container">

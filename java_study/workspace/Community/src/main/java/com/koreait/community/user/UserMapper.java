@@ -1,5 +1,10 @@
 package com.koreait.community.user;
 
-public interface UserMapper {
+import org.apache.ibatis.annotations.Mapper;
 
+import com.koreait.community.model.UserEntity;
+
+@Mapper
+public interface UserMapper {
+	int insUser(UserEntity p);
 }
