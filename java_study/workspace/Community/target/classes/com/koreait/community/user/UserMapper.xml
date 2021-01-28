@@ -10,5 +10,9 @@
  		( #{userId}, #{userPw}, #{salt}, #{nm}, #{gender} )
  	</insert>
  	
+ 	<select id="selUser" resultType="UserEntity">
+ 		SELECT * FROM t_user
+ 		WHERE userId = #{userId}
+ 	</select>
  	
  </mapper>
