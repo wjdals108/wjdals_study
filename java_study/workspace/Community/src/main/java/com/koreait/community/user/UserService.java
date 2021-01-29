@@ -19,7 +19,7 @@ public class UserService {
 	private SecurityUtils sUtils;
 	
 	public int insUser(UserEntity p) {
-		if(p.getUserId() == null || p.getUserId().length() < 2) {
+		if(p.getUserId() == null || p.getUserId().length() < 2 || chkId(p)==1) {
 			return 0;
 		}
 		
@@ -27,7 +27,7 @@ public class UserService {
 		String salt = sUtils.getSalt();
 		String hashPw = sUtils.getHashPw(p.getUserPw(), salt);
 		p.setSalt(salt);
-		p.setUserPw(hashPw);;
+		p.setUserPw(hashPw);
 		
 		return mapper.insUser(p);
 	}

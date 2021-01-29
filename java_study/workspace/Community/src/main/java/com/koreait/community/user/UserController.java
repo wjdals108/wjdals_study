@@ -10,8 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.koreait.community.model.UserEntity;
@@ -30,7 +30,7 @@ public class UserController {
 	
 	@ResponseBody
 	@PostMapping("/login")
-	public Map<String, Object> login(UserEntity p, HttpSession hs) {
+	public Map<String, Object> login(@RequestBody UserEntity p, HttpSession hs) {			//json 형태로 body를 날렸기때문에 @RequestBody가 있어야함
 		System.out.println("ID: " + p.getUserId());
 		System.out.println("PW: " + p.getUserPw());
 		
@@ -40,16 +40,29 @@ public class UserController {
 		return returnValue;
 	}
 	
+	@GetMapping("/logout")
+	public String logout(HttpSession hs) {
+		hs.invalidate();
+		return "redirect:/user/login";
+	}
+	
 	@GetMapping("/join")
 	public void join() {
 		
 	}
 	
+	@ResponseBody
 	@PostMapping("/join")
-	public String join(UserEntity p) {
-		service.insUser(p);
+	public Map<String, Object> join(@RequestBody UserEntity p) {			//json 형태로 body를 날렸기때문에 @RequestBody가 있어야함
+		System.out.println("ID: " + p.getUserId());
+		System.out.println("PW: " + p.getUserPw());
+		System.out.println("nm: " + p.getNm());
+		System.out.println("gender: " + p.getGender());
 		
-		return "redirect:/user/login";
+		Map<String, Object> returnValue = new HashMap<>();
+		returnValue.put("result", service.insUser(p));
+		
+		return returnValue;
 	}
 	
 	@ResponseBody						//얘가 알아서 JSon으로 바꿔줌
