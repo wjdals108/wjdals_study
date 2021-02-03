@@ -10,5 +10,15 @@
 			FROM t_board
 			WHERE category = #{category};
 		</insert>
+		
+		<select id="selBoardList" resultType="BoardDomain">
+			SELECT A.boardPk, A.seq, A.title, A.hits, A.regDt, A.userPk, B.nm AS writerNm
+			FROM t_board A
+			INNER JOIN t_user B
+			ON A.userPk = B.userPk
+			WHERE A.category = #{category}
+			AND A.isDel = 0
+			ORDER BY A.boardPk DESC
+		</select>
  	
  </mapper>

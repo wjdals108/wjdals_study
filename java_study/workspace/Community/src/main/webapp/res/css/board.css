@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+.basic-table {
+	border-collapse: collapse;
+  text-align: left;
+  line-height: 1.5;
+  margin : 20px 10px;
+}
+
+.basic-table th {
+	width: 150px;
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: top;
+  border: 1px solid #ccc;
+}
+
+.basic-table td {
+	width: 350px;
+  padding: 10px;
+  vertical-align: top;
+  border: 1px solid #ccc;
+}
+
+.basic-table tr.record {
+	cursor: pointer;
+}
