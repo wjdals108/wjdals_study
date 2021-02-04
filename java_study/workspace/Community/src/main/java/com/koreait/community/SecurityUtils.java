@@ -9,9 +9,14 @@ import com.koreait.community.model.UserEntity;
 
 @Component
 public class SecurityUtils {
-	public int getUserPk(HttpSession hs) {
-		UserEntity loginUser = (UserEntity)hs.getAttribute(Const.KEY_LOGINUSER);
-		return loginUser.getUserPk();
+	public int getLoginUserPk(HttpSession hs) {
+		UserEntity loginUser = getLoginUser(hs);
+		
+		return (loginUser == null) ? -1 : loginUser.getUserPk();
+	}
+	
+	public UserEntity getLoginUser(HttpSession hs) {
+		return (UserEntity)hs.getAttribute(Const.KEY_LOGINUSER);
 	}
 	
 	public String getSalt() {
