@@ -13,6 +13,6 @@ public interface BoardMapper {
 	int insBoard(BoardEntity p);
 	List<BoardDomain> selBoardList(BoardDTO p);
 	BoardDomain selBoard(BoardDTO p);
-	int updHits(BoardDTO p);
 	int updBoard(BoardEntity p);
+	int updHits(BoardDTO p);
 }

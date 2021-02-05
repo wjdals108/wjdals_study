@@ -32,34 +32,27 @@
 		<update id="updBoard">
 			UPDATE t_board
 			<set>
-				<choose>
-					<when test="hits == 1">
-						hits = hits+1
-					</when>
-					<otherwise>
-						<if test="title != null AND title != ''">
-							title = #{title},
-						</if>
-						<if test="ctnt != null AND ctnt != ''">
-							ctnt = #{ctnt},
-						</if>
-						<if test="isDel == 1">
-							isDel = 1,
-						</if>
-						modDt = now()
-					</otherwise>
-				</choose>
+				<if test="title != null and title !=''">
+					title = #{title},
+				</if>
+				<if test="ctnt != null and ctnt != ''">
+					ctnt = #{ctnt},
+				</if>
+				<if test="isDel == 1">
+					isDel = 1,
+				</if>
+				modDt = now()
 			</set>
 			WHERE boardPk = #{boardPk}
-			<if test="userPk != 0">
+			<if test="userPk > 0">
 				AND userPk = #{userPk}
 			</if>
 		</update>
 		
- 		
- 		<update id="updHits">
- 			UPDATE t_board
- 			SET hits = hits+1
- 			WHERE boardPk = #{boardPk};
- 		</update>
+		<update id="updHits">
+			UPDATE t_board
+			SET hits = hits+1
+			WHERE boardPk = #{boardPk}
+		</update>
+
  </mapper>

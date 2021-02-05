@@ -38,18 +38,23 @@ public class BoardService {
 	}
 	*/
 	
-	public BoardDomain selBoard(BoardDTO p, HttpSession hs) {
+	public BoardDomain selBoard(BoardDTO p) {
+		return mapper.selBoard(p);
+	}
+	
+	public BoardDomain selBoardWithHits(BoardDTO p, HttpSession hs) {
 		if(sUtils.getLoginUser(hs) != null) {
-			BoardEntity p2 = new BoardEntity();
-			p2.setBoardPk(p.getBoardPk());
-			p2.setHits(1);
-			mapper.updBoard(p2);
+			mapper.updHits(p);
 		}
 		return mapper.selBoard(p);
 	}
 	
-	public int updBoard(BoardEntity p) {
+	public int delBoard(BoardEntity p) {
 		p.setIsDel(1);
+		return updBoard(p);
+	}
+	
+	public int updBoard(BoardEntity p) {
 		return mapper.updBoard(p);
 	}
 }
