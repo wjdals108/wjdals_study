@@ -24,6 +24,7 @@ public class SecurityUtils {
 	}
 	
 	public String getHashPw(String pw, String salt) {
+		//BCrypt.checkpw(plaintext,  hashed); 얘 참고하자. 이방법쓰면 DB에 salt값 저장할 필요 없다.
 		return BCrypt.hashpw(pw, salt);
 	}
 }

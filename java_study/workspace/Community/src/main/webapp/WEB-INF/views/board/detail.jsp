@@ -23,4 +23,17 @@
 		<hr>
 		<div>글 내용 : ${requestScope.data.ctnt}</div>
 	</div>
+	<c:if test="${sessionScope.loginUser != null}">
+	<div>
+		<form id="cmtFrm">
+			<input type="text" name="ctnt">
+			<input id="cmtBtn" type="button" value="댓글등록">	
+		</form>
+	</div>
+	</c:if>
+	<div id="cmtList">
+	
+	</div>
+	
+	
 <script src="/res/js/board/detail.js"></script>

@@ -13,11 +13,20 @@ public class CmtService {
 	@Autowired
 	private CmtMapper mapper;
 	
+	public int insCmt(CmtEntity p) {
+		return mapper.insCmt(p);
+	}
+	
 	public List<CmtEntity> selCmtList(CmtEntity p){
 		return mapper.selCmtList(p);
 	}
 	
-	public int insCmt(CmtEntity p) {
-		return mapper.insCmt(p);
+	public int updCmt(CmtEntity p) {
+		return mapper.updCmt(p);
 	}
+	
+	public int delCmt(CmtEntity p) {
+		return mapper.delCmt(p);
+	}
+	
 }
