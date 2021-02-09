@@ -14,7 +14,7 @@
 		</div>
 	</c:if>
 	
-	<div id="data" data-pk="${requestScope.data.boardPk}" data-category="${requestScope.data.category}">
+	<div id="data" data-loginuserpk="${sessionScope.loginUser.userPk}" data-pk="${requestScope.data.boardPk}" data-category="${requestScope.data.category}">
 		<div>번호 : ${requestScope.data.seq}</div>
 		<div>제목 : ${requestScope.data.title}</div>
 		<div>날짜 : ${requestScope.data.regDt}"</div>
@@ -25,11 +25,20 @@
 	</div>
 	<c:if test="${sessionScope.loginUser != null}">
 	<div>
-		<form id="cmtFrm">
+		<form id="cmtFrm" onsubmit="return false">
 			<input type="text" name="ctnt">
 			<input id="cmtBtn" type="button" value="댓글등록">	
 		</form>
 	</div>
+	
+	<div id="modal" class="hide">
+		<div class="modal-content">
+			<span id="modClose">X</span>
+			<input type="text" id="modCtnt">
+			<input id="modBtn" type="button" value="수정">
+		</div>
+	</div>
+	
 	</c:if>
 	<div id="cmtList">
 	

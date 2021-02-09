@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.koreait.community.model.CmtDomain;
 import com.koreait.community.model.CmtEntity;
 
 @Service
@@ -17,7 +18,7 @@ public class CmtService {
 		return mapper.insCmt(p);
 	}
 	
-	public List<CmtEntity> selCmtList(CmtEntity p){
+	public List<CmtDomain> selCmtList(CmtDomain p){
 		return mapper.selCmtList(p);
 	}
 	
