@@ -1,0 +1,72 @@
+page 알고리즘?
+
+
+
+//내가한거
+int maxPage = 10
+int sideNum = 3
+int page = 3
+
+int sPage = getsPage();
+int ePage = getePage();
+
+
+public int getsPage(){
+	if(page<=sideNum) {
+		return 1;
+	} else {
+		if(page > maxPage-sideNum){
+			return maxPage-(sideNum*2)
+		}
+		return page - sideNum;
+	}
+}
+public int getePage(){
+	if(page >= maxPage-sideNum) {
+		return maxPage;
+	} else {
+		return page + sideNum
+	}
+}
+
+
+
+
+		
+
+
+//강사님이 하신거
+final int SIDE_NUM = Const.PAGE_SIDE_NUM;
+int pageLen = SIDE_NUM * 2;
+int page = p.getPage();
+int maxPage = bpd.getMaxPageNum();
+
+int sPage = page - SIDE_NUM;
+int ePage = page + SIDE_NUM;
+
+if(pageLen < maxPage) {
+	if(sPage < 1) {
+		sPage = 1;
+	} else if(sPage >= maxPage - pageLen) {
+		sPage = maxPage - pageLen;
+	}
+
+	if(ePage > maxPage) {
+		ePage = maxPage;
+	} else if(ePage <= pageLen) {
+		ePage = pageLen + 1;
+	}
+} else {
+	sPage = 1;
+	ePage = maxPage;
+}
+
+
+
+
+
+
+
+
+
+SELECT DATE_FORMAT(NOW(), '%Y년 %m월 %d일') FROM DUAL;

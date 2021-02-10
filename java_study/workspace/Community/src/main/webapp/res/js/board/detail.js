@@ -94,6 +94,7 @@ function selCmtList(){
 			}
 			
 			function modAjax(param) {
+				
 				fetch(`/cmt`, {
 					method: 'put',
 					headers: {
