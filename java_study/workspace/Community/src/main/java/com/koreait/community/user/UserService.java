@@ -67,34 +67,34 @@ public class UserService {
 		return mapper.selUser(p);
 	}
 	
-	public int uploadProfie(MultipartFile mf, HttpSession hs) {
+	public int uploadProfile(MultipartFile mf, HttpSession hs) {
 		int userPk = sUtils.getLoginUserPk(hs);
-		
-		String basePath = hs.getServletContext().getRealPath("/res/img/user/" + userPk);
+		String profileImg = "user/" + userPk;
+		String basePath = hs.getServletContext().getRealPath("/res/img/" + profileImg);
 		File folder = new File(basePath);
 		if(!folder.exists()) {
 			folder.mkdirs();
 		}
 		System.out.println("basePath : " + basePath);
-		
 		String originalFileName = mf.getOriginalFilename();
 		String ext = FilenameUtils.getExtension(originalFileName);
-		
 		System.out.println("ext : " + ext);
-		
 		String fileNm = UUID.randomUUID().toString() + "." + ext;
 		System.out.println("fileNm : " + fileNm);
-		
+		profileImg += "/" + fileNm;
 		try {
 			byte[] fileData = mf.getBytes();
 			File target = new File(basePath + "/" + fileNm);
 			FileCopyUtils.copy(fileData, target);
-			
 		} catch (IOException e) {
 			e.printStackTrace();
 			return 0;
 		}
 		
-		return 1;
+		UserEntity p = new UserEntity();
+		p.setUserPk(userPk);
+		p.setProfileImg(profileImg);
+				
+		return mapper.updUser(p);
 	}
 }

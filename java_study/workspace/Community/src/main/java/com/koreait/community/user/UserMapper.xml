@@ -23,4 +23,22 @@
  			</if>
  		</where>
  	</select>
+ 	
+ 	<update id="updUser">
+		UPDATE t_user
+		<set>
+			<if test=" userPw != null and userPw !='' ">
+				userPw = #{userPw},
+			</if>
+			<if test=" salt != null and salt !='' ">
+				salt = #{salt},
+			</if>
+			<if test=" profileImg != null">
+				profileImg = #{profileImg}
+			</if>
+		</set>
+		WHERE userPk = #{userPk}
+	</update>
+ 	
+ 	
  </mapper>

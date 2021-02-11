@@ -86,9 +86,10 @@ public class UserController {
 		model.addAttribute(Const.KEY_DATA, service.selUser(p));
 	}
 	
+	@ResponseBody
 	@PostMapping("/profile")
 	public int profile(MultipartFile profileImg, HttpSession hs) {
 		System.out.println("fileName : " + profileImg.getOriginalFilename());
-		return service.uploadProfie(profileImg, hs);
+		return service.uploadProfile(profileImg, hs);
 	}
 }
