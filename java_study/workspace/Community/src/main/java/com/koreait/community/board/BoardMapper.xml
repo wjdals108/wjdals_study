@@ -12,7 +12,7 @@
 		</insert>
 		
 		<select id="selBoardList" resultType="BoardDomain">
-			SELECT A.boardPk, A.seq, A.title, A.hits, A.regDt, A.userPk, B.nm AS writerNm
+			SELECT A.boardPk, A.seq, A.title, A.hits, A.regDt, A.userPk, B.nm AS writerNm, B.profileImg
 			FROM t_board A
 			INNER JOIN t_user B
 			ON A.userPk = B.userPk

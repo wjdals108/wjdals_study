@@ -4,7 +4,15 @@
 <div>
 	
 	<div>
-		<img src="/res/img/${requestScope.data.profileImg == null ? 'profile.jpg' : requestScope.data.profileImg}" alt="프로필 이미지">
+		<c:choose>
+			<c:when test="${requestScope.data.profileImg == null}">
+				<c:set var="src" value="profile.jpg"/>
+			</c:when>
+			<c:otherwise>
+				<c:set var="src" value="user/${requestScope.data.userPk}/${requestScope.data.profileImg}"/>
+			</c:otherwise>
+		</c:choose>
+		<img src="/res/img/${src}" alt="프로필 이미지">
 	</div>
 	
 	<div>

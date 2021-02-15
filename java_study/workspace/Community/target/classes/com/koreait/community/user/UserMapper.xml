@@ -40,5 +40,4 @@
 		WHERE userPk = #{userPk}
 	</update>
  	
- 	
  </mapper>
