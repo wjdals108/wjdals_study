@@ -43,6 +43,12 @@ public class BoardController {
 		return service.selBoardList(p);
 	}
 	
+	@ResponseBody
+	@GetMapping("getMaxPageNum")
+	public int selMaxPageNum(BoardDTO p) {
+		return service.selMaxPageNum(p);
+	}
+	
 	@GetMapping("/write")
 	public String write() {
 		return "board/writeEdit";

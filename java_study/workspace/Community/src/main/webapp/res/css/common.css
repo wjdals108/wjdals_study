@@ -64,3 +64,11 @@ nav {
 #modal .modal-content #modClose {
 	cursor: pointer;
 }
+
+#container > section {
+	padding: 30px;
+}
+
+.pointer {
+	cursor: pointer;
+}

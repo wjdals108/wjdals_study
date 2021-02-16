@@ -25,8 +25,12 @@ public class BoardService {
 	}
 	
 	public List<BoardDomain> selBoardList(BoardDTO p) {
-		
+		p.setsIdx(p.getRowCnt() * (p.getPage() - 1));
 		return mapper.selBoardList(p);
+	}
+	
+	public int selMaxPageNum(BoardDTO p) {
+		return mapper.selMaxPageNum(p);
 	}
 	
 	/*
