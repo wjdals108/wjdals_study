@@ -2,9 +2,13 @@ function goToDetail(boardPk){
 	location.href= `/board/detail?boardPk=${boardPk}`
 }
 
+var gPage = 1
 var listContentElem = document.querySelector('#listContent')
 var category = listContentElem.dataset.category
-var selRowCntElem = document.querySelector('#selRowCnt')
+var selRowCntElem = document.querySelector('#selRowCnt')	//글갯수
+var selSearchTypeElem = document.querySelector('#selSearchType')	//검색타입
+var txtSearchTextElem = document.querySelector('#txtSearchText')	//검색어
+var gSearchText = ''
 selRowCntElem.addEventListener('change', function(){
 	getBoardList(1)
 	getMaxPageNum()
@@ -16,16 +20,21 @@ function getBoardList(page){
 		page = 1
 	}
 	var rowCnt = selRowCntElem.value;
+	var searchType = selSearchTypeElem.value
+	var searchText = txtSearchTextElem.value
 	
 	var info = {
 		rowCnt,
 		page,
-		category	
+		searchText,
+		searchType,
 	}
+	gPage = page
 	sessionStorage.setItem('pageInfo', JSON.stringify(info))
 	
 	
-	fetch(`/board/listData?category=${category}&page=${page}&rowCnt=${rowCnt}`)
+	
+	fetch(`/board/listData?category=${category}&page=${page}&rowCnt=${rowCnt}&searchType=${searchType}&searchText=${searchText}`)
 	.then(res => res.json())
 	.then(myJson => {
 		boardProc(myJson)
@@ -106,7 +115,11 @@ function boardProc(myJson) {
 
 function getMaxPageNum(){
 	var rowCnt = selRowCntElem.value;
-	fetch(`/board/getMaxPageNum?category=${category}&rowCnt=${rowCnt}`)
+	var searchType = selSearchTypeElem.value
+	var searchText = txtSearchTextElem.value
+	
+	
+	fetch(`/board/getMaxPageNum?category=${category}&rowCnt=${rowCnt}&searchType=${searchType}&searchText=${searchText}`)
 	.then(res => res.json())
 	.then(myJson => {
 		pageProc(myJson)
@@ -121,11 +134,16 @@ function pageProc(myJson) {
 		span.innerText = i
 		span.classList.add('pointer')
 		
-		if(i===1){
+		if(gPage===i){
 			span.classList.add('selected')
 		}
 		
 		span.addEventListener('click', function(){
+			if(gSearchText) {
+				txtSearchTextElem.value = gSearchText
+			} else {
+				txtSearchTextElem.value = ''
+			}
 			getBoardList(i)
 			var selectSpan = document.querySelector('.selected')
 			selectSpan.classList.remove('selected')
@@ -140,19 +158,27 @@ function pageProc(myJson) {
 		})
 		pagingContentElem.append(span)
 	}
-	
 }
 
-var page = 1
+
 var pageInfoTxt = sessionStorage.getItem('pageInfo')
 if(pageInfoTxt) {
 	var pageInfo = JSON.parse(pageInfoTxt)
-	page = pageInfo.page
+	gPage = pageInfo.page
 	selRowCntElem.value = pageInfo.rowCnt
+	selSearchTypeElem.value = pageInfo.searchType
+	txtSearchTextElem.value = pageInfo.searchText
+	search(pageInfo.page)
+}  else {
+	search()
 }
 
-getBoardList(page)
-getMaxPageNum()
+function search(page = 1){
+	gSearchText = txtSearchTextElem.value
+	gPage = page
+	getBoardList(page)
+	getMaxPageNum()	
+}
 
 
 
