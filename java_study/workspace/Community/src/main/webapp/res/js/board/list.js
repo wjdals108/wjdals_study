@@ -14,6 +14,12 @@ selRowCntElem.addEventListener('change', function(){
 	getMaxPageNum()
 })
 
+txtSearchTextElem.addEventListener('keyup', function(e) {
+	if(e.keyCode === 13) {		//엔터키누른거임
+		search()
+	}
+})
+
 function getBoardList(page){
 	
 	if(!page) {
@@ -63,7 +69,9 @@ function boardProc(myJson) {
 		<td>작성자</td>
 	`
 	table.append(htr)
-
+	
+	var searchType = selSearchTypeElem.value
+	var searchText = txtSearchTextElem.value
 		
 	myJson.forEach(function(item) {
 		table.append(createRecord(item))
@@ -84,10 +92,34 @@ function boardProc(myJson) {
 		var td_4 = document.createElement('td')
 		var td_5 = document.createElement('td')
 		
+		let title = item.title
+		let writerNm = item.writerNm
+		
+		//하이라이트 처리
+		if(searchText !== ''){
+			switch(searchType) {
+				case '1':				//제목
+				case '3':				//제목+내용
+				title = setHighlight(title, searchText)
+				break
+				case '4':				//작성자
+				writerNm = setHighlight(writerNm, searchText)
+				break
+			}
+		}
+		
 		td_1.innerText = item.seq
-		td_2.innerText = item.title
+		td_2.innerHTML = title
 		td_3.innerText = item.hits
 		td_4.innerText = item.regDt
+		td_5.innerHTML =
+		`
+			<img id="profileImg" src="/res/img/user/${item.userPk}/${item.profileImg}" alt="프로필 이미지" onerror="this.src='/res/img/profile.jpg'">
+			${writerNm}
+		`
+		
+
+		/*
 		if(item.profileImg == null){
 			td_5.innerHTML = 
 			`
@@ -101,6 +133,7 @@ function boardProc(myJson) {
 				${item.writerNm}
 			`
 		}
+		*/
 		
 		tr.append(td_1)
 		tr.append(td_2)

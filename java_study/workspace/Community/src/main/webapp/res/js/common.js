@@ -6,3 +6,7 @@ for(var i=0; i<menuList.length; i++) {
 		sessionStorage.removeItem('pageInfo')
 	})
 }
+
+function setHighlight(originVal, highlightVal) {
+	return originVal.replace(highlightVal, `<mark>${highlightVal}</mark>`)
+}
