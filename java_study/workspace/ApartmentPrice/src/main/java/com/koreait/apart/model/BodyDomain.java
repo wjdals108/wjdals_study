@@ -9,13 +9,13 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 public class BodyDomain {
 	
 	@JacksonXmlProperty(localName="items")
-	private List<ApartmentInfoEntity> items;
+	private List<ApartmentInfoDomain> items;
 
-	public List<ApartmentInfoEntity> getItems() {
+	public List<ApartmentInfoDomain> getItems() {
 		return items;
 	}
 
-	public void setItems(List<ApartmentInfoEntity> items) {
+	public void setItems(List<ApartmentInfoDomain> items) {
 		this.items = items;
 	}
 }

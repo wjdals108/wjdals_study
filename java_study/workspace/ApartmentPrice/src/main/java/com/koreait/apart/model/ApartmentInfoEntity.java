@@ -13,7 +13,7 @@ public class ApartmentInfoEntity {
 	@JacksonXmlProperty(localName="아파트")
 	private String apartment_name;
 	@JacksonXmlProperty(localName="거래금액")
-	private int deal_amount;
+	private String deal_amount;
 	@JacksonXmlProperty(localName="건축년도")
 	private String build_year;
 	@JacksonXmlProperty(localName="년")
@@ -26,9 +26,20 @@ public class ApartmentInfoEntity {
 	private float area_for_exclusive_use;
 	@JacksonXmlProperty(localName="층")
 	private int flr;
-	@JacksonXmlProperty(localName="지역코드")
+	
+	
 	private String regional_code;
 	
+	private int location_cd;
+	
+	
+	
+	public int getLocation_cd() {
+		return location_cd;
+	}
+	public void setLocation_cd(int location_cd) {
+		this.location_cd = location_cd;
+	}
 	public int getI_ai() {
 		return i_ai;
 	}
@@ -53,11 +64,11 @@ public class ApartmentInfoEntity {
 	public void setApartment_name(String apartment_name) {
 		this.apartment_name = apartment_name;
 	}
-	public int getDeal_amount() {
+	public String getDeal_amount() {
 		return deal_amount;
 	}
-	public void setDeal_amount(int deal_amount) {
-		this.deal_amount = deal_amount;
+	public void setDeal_amount(String deal_amount) {
+		this.deal_amount = deal_amount.replace(",", "");
 	}
 	public String getBuild_year() {
 		return build_year;

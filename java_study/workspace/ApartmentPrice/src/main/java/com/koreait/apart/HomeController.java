@@ -21,12 +21,13 @@ public class HomeController {
 
 	@GetMapping("/")
 	public String home(Locale locale, Model model) {
+		model.addAttribute("cd", service.getExternalCd());
 		return "home";
 	}
 
 	@GetMapping("/result")
-	public void result(ApartmentInfoEntity p) {
-		service.getData(p);
+	public void result(ApartmentInfoEntity p, Model model) {
+		model.addAttribute("list", service.getData(p));
 	}
 
 }
