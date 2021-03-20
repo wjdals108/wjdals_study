@@ -1,0 +1,44 @@
+virtualbox로 우분투 리눅스 설치
+
+https://ndb796.tistory.com/370   - 참조
+
+
+
+virtualbox 설치
+- 특별히 바꾸는거 없이 기본적인 설정 그대로 설치
+
+
+리눅스 설치위해
+우분투 이미지 파일(iso) 다운
+http://releases.ubuntu.com/16.04/
+
+
+virtualbox에서 새로만들기 버튼 클릭해서 가상머신 생성
+
+메모리할당(2G 했음)
+
+가상 하드디스크 (10G 했음)
+하드 디스크 파일 종류는 기본인 VDI (VirtualBox Disk Image)
+
+
+가상 머신 만들고 나서
+설정에서 우분투 이미지 파일 선택
+
+시작 버튼 눌러서 우분투로 부팅 진행
+
+Install Ubuntu 버튼 눌러서 우분투 설치 진행
+
+
+특별한 거 없이 설치 진행하고 root 계정으로 로그인하면 됨
+
+그 외에 해상도, 클립보드 등은 위의 사이트를 참조하여 설정
+
+
+
+
+그 후, vue.js , php 공부를 위해 설치한 우분투에 vscode를 설치
+
+https://webnautes.tistory.com/1197 - 참조
+
+
+사이트를 참조하여 vscode를 설치하였음
