@@ -1,0 +1,4 @@
+sudo apt-get -y install lamp-server^
+
+systemctl status apache2
+

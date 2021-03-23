@@ -13,3 +13,44 @@ spa에서 미리 해당하는 모든 컴포넌트 페이지를 받아놓고
 
 
 
+
+
+
+vue cli 설치
+
+npm install -g @vue/cli
+
+
+vue cli 설치하고나면
+
+vue create 폴더명		이렇게 프로젝트를 만들 수 있음
+
+
+vue router 설치
+
+npm install vue-router --save
+
+
+vue bootstrap 설치
+
+npm install vue bootstrap-vue bootstrap
+
+
+main.js에다 추가
+
+import {BootstrapVue, IconsPlugin} from 'bootstrap-vue'
+
+// Install BootstrapVue
+Vue.use(BootstrapVue)
+// Optionally install the BootstrapVue icon components plugin
+Vue.use(IconsPlugin)
+
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+
+
+vue.js 라이프사이클 다이어그램 봐두자
+https://kr.vuejs.org/v2/guide/instance.html#%EB%9D%BC%EC%9D%B4%ED%94%84%EC%82%AC%EC%9D%B4%ED%81%B4-%EB%8B%A4%EC%9D%B4%EC%96%B4%EA%B7%B8%EB%9E%A8
+
+
