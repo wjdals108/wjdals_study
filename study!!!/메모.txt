@@ -1,0 +1,30 @@
+공부할것
+
+vue.js - 급함
+php - 코드보고 이해할 수 있을정도
+
+cgi - c도 공부해놔야함
+
+docker
+git - 다시 제대로 공부해놓자
+보내주신 웹 인수인계 문서 보자
+
+
+
+JIRA Bitbucket Bamboo
+
+
+IPN 기존에 UDP에서 제작한거
+IPM CPRO에서 구현하고 UDP에서 VCA관련된 웹 추가한거
+
+
+sudo apt-get install nginx
+nginx 우분투에서 설치하면 서버를 하나 받아서
+다른곳에서도 접속가능함
+
+vue 프로젝트 하나 만들어서 열어보자
+
+
+
+
+https://jay-ji.tistory.com/57
